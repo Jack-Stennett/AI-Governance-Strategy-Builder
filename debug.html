@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Test</title>
+</head>
+<body>
+    <h1>Debug Test</h1>
+    <p>Testing file loading...</p>
+    <div id="test-output"></div>
+    
+    <script>
+        console.log('Debug script loaded');
+        document.getElementById('test-output').innerHTML = 'JavaScript is working!';
+        
+        // Test if we can access the main app.js functions
+        fetch('src/app.js')
+            .then(response => response.text())
+            .then(data => {
+                console.log('app.js size:', data.length);
+                document.getElementById('test-output').innerHTML += '<br>app.js loaded, size: ' + data.length + ' characters';
+            })
+            .catch(error => {
+                console.error('Error loading app.js:', error);
+                document.getElementById('test-output').innerHTML += '<br>Error loading app.js: ' + error;
+            });
+    </script>
+</body>
+</html>

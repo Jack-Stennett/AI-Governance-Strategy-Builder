@@ -1,0 +1,55 @@
+{
+  "name": "ai-governance-strategy-tool",
+  "version": "4.0.0",
+  "description": "Interactive strategy simulation for exploring AI governance options and their outcomes",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8080",
+    "dev": "python -m http.server 8080",
+    "serve": "python -m http.server 8080",
+    "test": "start test-browser.html",
+    "build": "echo 'No build step required - static files only'",
+    "deploy": "gh-pages -d ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jack-Stennett/AI-Governance-Tool.git"
+  },
+  "keywords": [
+    "ai-governance",
+    "strategy-game",
+    "policy-simulation", 
+    "monte-carlo",
+    "interactive-tool",
+    "educational",
+    "governance-mapping"
+  ],
+  "author": "Jack Stennett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jack-Stennett/AI-Governance-Tool/issues"
+  },
+  "homepage": "https://jack-stennett.github.io/AI-Governance-Tool",
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "files": [
+    "index.html",
+    "src/",
+    "assets/",
+    "test-browser.html",
+    "README.md",
+    "GAME_DESIGN.md",
+    "DEVELOPMENT_LOG.md"
+  ]
+}

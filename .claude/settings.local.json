@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m pip install:*)",
+      "Bash(pip install:*)",
+      "Bash(pip --version)",
+      "Bash(python -m pip:*)",
+      "Bash(python:*)",
+      "Bash(cmd.exe /c \"pip install flask flask-cors requests\")",
+      "Bash(powershell.exe:*)",
+      "Bash(\"C:\\Users\\jack_\\anaconda3\\Scripts\\pip.exe\" install flask flask-cors requests)",
+      "Bash(\"C:\\Users\\jack_\\anaconda3\\python.exe\" test_llm.py)",
+      "Bash(\"C:\\Users\\jack_\\anaconda3\\python.exe\" test_qwen.py)",
+      "Bash(\"C:\\Users\\jack_\\anaconda3\\python.exe\" test_direct_api.py)",
+      "Bash(\"C:\\Users\\jack_\\anaconda3\\python.exe\" test_token.py)",
+      "Bash(\"C:\\Users\\jack_\\anaconda3\\python.exe\" simple_token_test.py)",
+      "Bash(\"C:\\Users\\jack_\\anaconda3\\python.exe\" test_smollm.py)",
+      "Bash(\"C:\\Users\\jack_\\anaconda3\\python.exe\" test_qwen_turbo.py)",
+      "Bash(curl:*)",
+      "Bash(\"C:\\Users\\jack_\\anaconda3\\python.exe\" app.py)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(set HF_TOKEN=your-new-token-here)",
+      "Bash(git log:*)",
+      "Bash(\"C:\\Users\\jack_\\anaconda3\\Scripts\\pip.exe\" install git-filter-repo)",
+      "Bash(\"C:\\Users\\jack_\\anaconda3\\Scripts\\git-filter-repo.exe\" --path backend/simple_token_test.py --invert-paths)",
+      "Read(//c/Users/jack_/onedrive/desktop/**)",
+      "Bash(git checkout:*)",
+      "Bash(git branch:*)",
+      "Bash(git grep:*)",
+      "Bash(git push:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

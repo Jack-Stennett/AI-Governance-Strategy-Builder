@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Governance Strategy Builder</title>
+  <link rel="stylesheet" href="src/styles.css?v=4">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1>AI Governance Strategy Builder</h1>
+    <div class="progress-bar">
+      <div class="progress-step active" data-step="1">1. Difficulty</div>
+      <div class="progress-step" data-step="2">2. Resources</div>
+      <div class="progress-step" data-step="3">3. Strategic Posture</div>
+      <div class="progress-step" data-step="4">4. Institutions</div>
+      <div class="progress-step" data-step="5">5. Regulations</div>
+      <div class="progress-step" data-step="6">6. Technical Controls</div>
+    </div>
+  </div>
+</header>
+
+<main id="app">
+
+  <!-- PAGE 1: Difficulty Selection -->
+  <section id="page1" class="page active">
+    <div class="page-content">
+      <div class="narrative">
+        <h2>The Race Towards AGI</h2>
+        <p>Great powers and AI labs have entered a race to develop AGI as quickly as possible. As the hero of this story, your role is to allocate global resources to ensure that humanity survives the dangers of misalignment, misuse or gradual disempowerment that AI scholars have warned about.</p>
+        <p>You will pick what global posture to take, which institutions to build, and which mechanisms we need to implement this.</p>
+        <p><strong>First, which world are we in?</strong></p>
+      </div>
+
+      <!-- LLM Enhancement Options -->
+      <div id="llm-config" class="llm-config-panel">
+        <div class="llm-toggle">
+          <label>
+            <input type="checkbox" id="enhance-analysis" checked>
+            <span class="toggle-text">📝 Enhance final analysis with AI narrative (powered by Hugging Face)</span>
+          </label>
+        </div>
+        <div id="llm-settings" class="llm-settings">
+          <div class="model-select">
+            <label for="llm-model">AI Enhancement Model:</label>
+            <select id="llm-model">
+              <option value="Qwen/Qwen2.5-7B-Instruct">Qwen2.5-7B-Instruct (Advanced)</option>
+              <option value="HuggingFaceTB/SmolLM3-3B">SmolLM3-3B (Backup)</option>
+            </select>
+          </div>
+          <div class="usage-info">
+            <small>🤖 AI enhancement powered by your Hugging Face Pro account</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="options-grid" id="difficulty-grid">
+        <!-- Difficulty options will be populated by JavaScript -->
+      </div>
+
+      <div class="page-actions">
+        <button id="next-to-page2" class="btn-primary" disabled>Continue to Resource Allocation →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 2: Resource/Budget Selection -->
+  <section id="page2" class="page">
+    <div class="page-content">
+      <div class="narrative">
+        <h2>Mobilizing Global Resources</h2>
+        <p>The stakes couldn't be higher. World leaders have acknowledged the existential importance of getting AI governance right, but haven't yet committed the necessary resources.</p>
+        <p>The level of commitment varies dramatically based on public awareness, political will, and competing priorities.</p>
+        <p><strong>How much support have you secured for this critical mission?</strong></p>
+      </div>
+
+      <div class="options-grid" id="resources-grid">
+        <!-- Resource options will be populated by JavaScript -->
+      </div>
+
+      <div class="page-actions">
+        <button id="back-to-page1" class="btn-secondary">← Back to Difficulty</button>
+        <button id="next-to-page3" class="btn-primary" disabled>Continue to Strategy Selection →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 3: Strategic Postures -->
+  <section id="page3" class="page">
+    <div class="page-content">
+      <div class="narrative">
+        <h2>Choose Your Strategic Approach</h2>
+        <p>As the architect of global AI governance strategy, you must first choose the fundamental approach that will guide all other decisions.</p>
+        <p><strong>Select the strategic posture that best represents your vision for managing AI risks:</strong></p>
+      </div>
+
+      <div class="options-grid" id="postures-grid">
+        <!-- Options will be populated by JavaScript -->
+      </div>
+
+      <div class="page-actions">
+        <button id="back-to-page2" class="btn-secondary">← Back to Resources</button>
+        <button id="next-to-page4" class="btn-primary" disabled>Continue to Institutional Design →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 4: Institutional Architectures -->
+  <section id="page4" class="page">
+    <div class="page-content">
+      <div class="narrative">
+        <h2>Design Institutional Architecture</h2>
+        <p>With your strategic approach defined, you must now build the institutional framework to implement it.</p>
+        <p>These organizations, governance bodies, and coordination mechanisms will be the backbone of your AI safety system.</p>
+        <p><strong>Select the institutional architectures you want to establish:</strong></p>
+      </div>
+
+      <div class="budget-display"></div>
+
+      <div class="options-grid" id="institutions-grid">
+        <!-- Options will be populated by JavaScript -->
+      </div>
+
+      <div class="page-actions">
+        <button id="back-to-page3" class="btn-secondary">← Back to Strategic Posture</button>
+        <button id="next-to-page5" class="btn-primary">Continue to Legal Framework →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 5: Regulatory/Legal Mechanisms -->
+  <section id="page5" class="page">
+    <div class="page-content">
+      <div class="narrative">
+        <h2>Establish Legal & Regulatory Framework</h2>
+        <p>Your institutions need teeth. Legal mechanisms, compliance frameworks, and regulatory tools are needed to enforce your governance vision.</p>
+        <p>These are the rules of the game that will shape how AI systems are developed, deployed, and monitored.</p>
+        <p><strong>Select the regulatory and legal mechanisms you want to implement:</strong></p>
+      </div>
+
+      <div class="budget-display"></div>
+
+      <div class="options-grid" id="mechanisms-grid">
+        <!-- Options will be populated by JavaScript -->
+      </div>
+
+      <div class="page-actions">
+        <button id="back-to-page4" class="btn-secondary">← Back to Institutions</button>
+        <button id="next-to-page6" class="btn-primary">Continue to Technical Controls →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 6: Technical & Infrastructural Controls -->
+  <section id="page6" class="page">
+    <div class="page-content">
+      <div class="narrative">
+        <h2>Implement Technical Safeguards</h2>
+        <p>Finally, you need technical controls that can directly monitor, limit, and manage AI systems at the computational level.</p>
+        <p>These tools will provide the technical enforcement mechanisms for your governance strategy.</p>
+        <p><strong>Select the technical and infrastructural controls you want to deploy:</strong></p>
+      </div>
+
+      <div class="budget-display"></div>
+
+      <div class="options-grid" id="controls-grid">
+        <!-- Options will be populated by JavaScript -->
+      </div>
+
+      <div class="page-actions">
+        <button id="back-to-page5" class="btn-secondary">← Back to Legal Framework</button>
+        <button id="complete-strategy" class="btn-primary">Complete Strategy & View Results →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS PAGE -->
+  <section id="results-page" class="page">
+    <div class="page-content">
+      <h2>Your AI Governance Strategy</h2>
+      
+      <div id="strategy-summary">
+        <!-- Strategy summary will be populated by JavaScript -->
+      </div>
+      <div id="outcome-section">
+        <!-- Outcome evaluation will be populated by JavaScript -->
+      </div>
+      <div class="page-actions">
+        <button id="start-over" class="btn-primary">Create New Strategy</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="src/app.js?v=14"></script>
+
+</body>
+</html>

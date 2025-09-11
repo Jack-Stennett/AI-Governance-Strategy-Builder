@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Browser Compatibility Test</title>
+    <style>
+        body { font-family: system-ui, sans-serif; margin: 20px; }
+        .test { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+        .pass { background: #d4edda; border-color: #c3e6cb; }
+        .fail { background: #f8d7da; border-color: #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>AI Governance Tool - Browser Compatibility Test</h1>
+    <div id="results"></div>
+    
+    <script>
+        const results = document.getElementById('results');
+        
+        function test(name, condition) {
+            const div = document.createElement('div');
+            div.className = `test ${condition ? 'pass' : 'fail'}`;
+            div.innerHTML = `<strong>${name}:</strong> ${condition ? 'PASS' : 'FAIL'}`;
+            results.appendChild(div);
+        }
+        
+        // Test modern JavaScript features
+        test('ES6 Modules Support', typeof Symbol !== 'undefined');
+        test('Async/Await Support', typeof (async function(){}) === 'function');
+        test('Fetch API', typeof fetch !== 'undefined');
+        test('CSS Custom Properties', CSS && CSS.supports && CSS.supports('color', 'var(--test)'));
+        test('Local Storage', typeof localStorage !== 'undefined');
+        test('Canvas Support', !!document.createElement('canvas').getContext);
+        test('EventListener Support', typeof addEventListener !== 'undefined');
+        test('querySelector Support', typeof document.querySelector !== 'undefined');
+        test('JSON Support', typeof JSON !== 'undefined');
+        test('Array Methods', Array.prototype.forEach && Array.prototype.map);
+        
+        // Test CSV parsing requirements
+        test('String Split Method', typeof ''.split === 'function');
+        test('Regular Expressions', typeof RegExp !== 'undefined');
+        test('Object.assign', typeof Object.assign === 'function');
+        
+        // Test tooltip positioning requirements
+        test('getBoundingClientRect', typeof Element.prototype.getBoundingClientRect === 'function');
+        test('scrollX/scrollY', typeof window.scrollX !== 'undefined');
+        
+        const div = document.createElement('div');
+        div.className = 'test';
+        div.innerHTML = '<strong>Browser:</strong> ' + navigator.userAgent;
+        results.appendChild(div);
+        
+        // Add link to main application
+        const linkDiv = document.createElement('div');
+        linkDiv.style.marginTop = '20px';
+        linkDiv.innerHTML = '<a href="index.html" style="background: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Launch AI Governance Tool</a>';
+        results.appendChild(linkDiv);
+    </script>
+</body>
+</html>

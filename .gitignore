@@ -1,0 +1,15 @@
+# Environment files with secrets
+backend/start_server.bat
+backend/config.py
+backend/.env
+
+# Node modules
+node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
