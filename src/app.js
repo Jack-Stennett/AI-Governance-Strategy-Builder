@@ -3,24 +3,24 @@
 // Difficulty levels
 const DIFFICULTY_LEVELS = {
   optimist: { 
-    label: 'Optimist Mode (95°)', 
+    label: 'The LeCun World (Optimist)', 
     temp: 95,
     desc: 'We live in the optimistic world where AI is aligned-by-default. With proper coordination and reasonable precautions, we can navigate this transition successfully. Multiple approaches can work, and humanity has broad margin for error.' 
   },
   realist: { 
-    label: 'Moderate Mode (70°)', 
+    label: 'The Amodei World (Moderate)', 
     temp: 70,
-    desc: 'We\'re in the world where things could easily go wrong. Making AI go well requires serious effort and coordination, but multiple strategies could succeed if executed well.' 
+    desc: 'We live in the world where things could easily go wrong. Making AI go well requires serious effort and coordination, but multiple strategies could succeed if executed well.' 
   },
   pessimist: { 
-    label: 'Pessimist Mode (35°)', 
+    label: 'The Hinton World (Pessimist)', 
     temp: 35,
     desc: 'We live in the precarious world where AI development is fraught with dangers. Only careful, well-executed strategies have a chance of success. Most approaches will fail without exceptional coordination and foresight.' 
   },
   yudkowskyite: { 
-    label: 'Yudkowsky Mode (5°)', 
+    label: 'The Yudkowsky World (Doomer)', 
     temp: 5,
-    desc: 'We live in the Yudkowskyian world where AI alignment is extraordinarily difficult, and doom is the default scenario. Only a narrow path can lead us to existential safety, and humanity must thread the needle perfectly.' 
+    desc: 'We live in the terrifying world where AI alignment is extraordinarily difficult, and doom is the default scenario. Only a very precise set of governance strategies, and a lot of luck, can lead us to existential safety. Humanity must thread the needle perfectly.' 
   }
 };
 
@@ -30,19 +30,19 @@ const RESOURCE_LEVELS = {
     label: 'High Commitment Scenario',
     budget: 350,
     pc: 40,
-    desc: '$350B Budget • 40 Political Capital. Major powers have recognized AI as the defining challenge of our time. Unprecedented international cooperation and public support have enabled resource investment comparable to wartime mobilization.'
+    desc: '**$350B Budget** • **40 Political Capital**. Major powers have recognized AI as the defining challenge of our time. Unprecedented international cooperation and public support have enabled resource investment comparable to wartime mobilization.'
   },
   medium: {
     label: 'Moderate Commitment Scenario', 
     budget: 220,
     pc: 24,
-    desc: '$220B Budget • 24 Political Capital. Some countries are taking AI governance seriously, but competing priorities and disagreements limit the resources that can be dedicated to making AI go well.'
+    desc: '**$220B Budget** • **24 Political Capital**. Some countries are taking AI governance seriously, but competing priorities and disagreements limit the resources that can be dedicated to making AI go well.'
   },
   low: {
     label: 'Low Commitment Scenario',
     budget: 140,
     pc: 16, 
-    desc: '$140B Budget • 16 Political Capital. Most governments are distracted by petty feuds and the latest cause du jour. AI safety is viewed as a luxury or future problem. You must work within severe constraints and limited international cooperation.'
+    desc: '**$140B Budget** • **16 Political Capital**. Most governments are distracted by petty feuds and the latest cause du jour. AI safety is viewed as a luxury or future problem. You must work within severe constraints and limited international cooperation.'
   }
 };
 
@@ -91,55 +91,62 @@ const COSTS = {
 // Data from original catalogue with base success rates and enhanced descriptions
 const DATA = {
   postures: [
-    {id:'laissez', label:'Laissez-faire', base:0.15, desc:'A "permissionless innovation" approach that lets AI models proliferate without global coordination. This strategy relies on market forces and responsible corporate behaviour to naturally regulate development, similar to early internet policy in the 1990s.', link:'https://www.civitasinstitute.org/research/defending-technological-dynamism-the-freedom-to-innovate-in-the-age-of-ai'},
-    {id:'clubs', label:'AI clubs / blocs', base:0.25, desc:'Developing networks between aligned countries for AI coordination. This approach creates powerful coalitions that can share safety research and establish common standards.', link:'https://www.oecd.org/content/dam/oecd/en/publications/reports/2023/09/g7-hiroshima-process-on-generative-artificial-intelligence-ai_8d19e746/bf3c0c60-en.pdf'},
-    {id:'ogi', label:'Open Global Investment (OGI)', base:0.30, desc:'Use market-based mechanisms to concentrate investment in certain actors, creating massive incentive structures to channel the world\'s best talent toward safe AI development. This approach, proposed by Nick Bostrom, aims to eliminate dangerous race dynamics by coordinating global funding.', link:'https://www.lesswrong.com/posts/LtT24cCAazQp4NYc5/open-global-investment-as-a-governance-model-for-agi'},
-    {id:'mad', label:'MAD/MAIM', base:0.22, desc:'This approach focuses on working towards a deterrence-based equilibrium similar to Cold War nuclear deterrence. Nations develop verification systems and maintain credible AI-based deterrence, so that, if major power attempt a "first strike" using AI, the other party/parties will be able to cause their AI systems to malfunction.', link:'https://www.nationalsecurity.ai/chapter/deterrence-with-mutual-assured-ai-malfunction-maim'},
-    {id:'moratorium', label:'Global Moratorium', base:0.18, desc:'A coordinated halt to AGI development worldwide, similar to nuclear test ban treaties or biological research moratoria. This aims to provide breathing room for researchers to solve key alignment problems before (possibly) restarting AI research under strict safety protocols.', link:'https://moratorium.ai/'},
-    {id:'cooperate', label:'Cooperative development', base:0.35, desc:'International laws ensure defensive AI technologies are aligned with humans are developed before offensive technologies. This approach, supported by frameworks like Anthropic\'s safety commitments, unites humanity in building safe AI through unprecedented collaboration.', link:'https://www.lesswrong.com/posts/jwhcXmigv2LTrbBiB/success-without-dignity-a-nearcasting-story-of-avoiding'},
-    {id:'dacc', label:'d/Acc (defensive accelerationism)', base:0.32, desc:'This approach focuses on the 4 D\'s - defensive, decentralized, differential development. Essentially, it means developing safety technologies more quickly than dangerous technologies. Supporting this strategy focuses on empowering a wide range of actors to develop effective safety and AI control technologies.', link:'https://80000hours.org/podcast/episodes/vitalik-buterin-techno-optimism'},
-    {id:'nonprolif', label:'Non-proliferation', base:0.28, desc:'Stop proliferation of AI capabilities and prevent diffusion of dangerous models or capabilities, similar to the Nuclear Non-Proliferation Treaty. This approach uses export controls and licensing to limit the number of actors who could pose existential risks, making governance much more manageable.', link:'https://www.nationalsecurity.ai/chapter/nonproliferation'},
-    {id:'stratadv', label:'Strategic advantage', base:0.26, desc:'Make sure one responsible actor or nation state "wins" by developing advanced AI systems faster than geopolitical rivals. This approach is intended to ensure that safety-conscious developers reach AGI before less careful competitors, preventing a dangerous multipolar scenario. The leading actor could then implement global safety standards from a position of strength.', link:'https://www.heritage.org/big-tech/commentary/the-us-not-china-should-take-the-lead-ai'}
+    {id:'laissez', label:'Laissez-faire', base:0.02, desc:'A "permissionless innovation" approach that lets AI models proliferate without global coordination. This strategy relies on market forces and responsible corporate behaviour to naturally regulate development, similar to early internet policy in the 1990s.', link:'https://www.civitasinstitute.org/research/defending-technological-dynamism-the-freedom-to-innovate-in-the-age-of-ai'},
+    {id:'clubs', label:'AI clubs / blocs', base:0.12, desc:'This approach focuses on developing networks between aligned countries for AI coordination. This approach creates powerful coalitions that share safety research and establish common standards.', link:'https://www.oecd.org/content/dam/oecd/en/publications/reports/2023/09/g7-hiroshima-process-on-generative-artificial-intelligence-ai_8d19e746/bf3c0c60-en.pdf'},
+    {id:'ogi', label:'Open Global Investment (OGI)', base:0.25, desc:'This strategy leverages market-based mechanisms to concentrate investment in certain actors, creating massive incentives to channel the world\'s best talent toward safe AI development. This approach, proposed by Nick Bostrom, eliminates dangerous race dynamics by coordinating global funding.', link:'https://www.lesswrong.com/posts/LtT24cCAazQp4NYc5/open-global-investment-as-a-governance-model-for-agi'},
+    {id:'mad', label:'Mutually Assured AI Malfunction', base:0.08, desc:'This approach works toward a deterrence-based equilibrium similar to Cold War MAD doctrine. Nations develop verification systems and maintain credible AI-based deterrence, so that if a major power attempts a "first strike" using AI, other parties can cause their AI systems to malfunction.', link:'https://www.nationalsecurity.ai/chapter/deterrence-with-mutual-assured-ai-malfunction-maim'},
+    {id:'moratorium', label:'Global Moratorium', base:0.14, desc:'A coordinated halt to AGI development worldwide, similar to nuclear test ban treaties or biological research moratoria. This aims to provide breathing room for researchers to solve key alignment problems before (possibly) restarting AI research under strict safety protocols.', link:'https://moratorium.ai/'},
+    {id:'cooperate', label:'Cooperative development', base:0.28, desc:'In this approach, hard international laws are established with global cooperation to make sure that alignment and control technologies are developed before high-risk technologies. This approach, supported by frameworks like Anthropic\'s safety commitments, unites humanity in building safe AI through unprecedented collaboration.', link:'https://www.lesswrong.com/posts/jwhcXmigv2LTrbBiB/success-without-dignity-a-nearcasting-story-of-avoiding'},
+    {id:'dacc', label:'d/Acc (defensive accelerationism)', base:0.18, desc:'This approach focuses on defensive approaches developed in an ambitious and mostly decentralized manner. It works by empowering many actors to develop effective safety and AI control technologies.', link:'https://80000hours.org/podcast/episodes/vitalik-buterin-techno-optimism'},
+    {id:'nonprolif', label:'Non-proliferation', base:0.22, desc:'This approach aims to stop the proliferation of AI capabilities and prevent diffusion of dangerous models, in a manner similar to the Nuclear Non-Proliferation Treaty, aiming to limit the number of actors who could generate high-risk AI capabilities, making governance much more manageable.', link:'https://www.nationalsecurity.ai/chapter/nonproliferation'},
+    {id:'stratadv', label:'Strategic advantage', base:0.13, desc:'This strategy aims to make sure one responsible actor or nation state "wins" by developing advanced AI systems faster than geopolitical rivals. The logic is that safety-conscious labs and nations will reach AGI before less careful competitors, preventing a dangerous multipolar scenario. The leading actor can then implement global safety standards from a position of strength.', link:'https://www.heritage.org/big-tech/commentary/the-us-not-china-should-take-the-lead-ai'}
   ],
   institutions: [
-    {id:'self', label:'Self-governance', desc:'Firms introduce voluntary standards for AGI governance. This approach relies on industry initiative like the Frontier Safety Frameworks from the 2024 Seoul Summit.', link:'https://www.lesswrong.com/posts/B2DFgzG6bptZvin9L/examples-of-self-governance-to-reduce-technology-risk'},
-    {id:'benefits', label:'Benefits & access distribution', desc:'Institutions for distributing the benefits of AI or access to transformative AI systems to all parties, such as through windfall clauses proposed by Nick Bostrom.', link:'https://www.governance.ai/research-paper/the-windfall-clause-distributing-the-benefits-of-ai-for-the-common-good'},
-    {id:'corp', label:'Corporate governance bodies', desc:'Board-level structures for AI risk, either enforced or encouraged by regulators. Similar to Sarbanes-Oxley compliance boards or ESG mandates, these would ensure corporate oversight of AI development risks.', link:'https://www.lesswrong.com/posts/KD4AMfaF3eeWdQwAC/corporate-governance-for-frontier-ai-labs-a-research-agenda'},
+    {id:'self', label:'Self-governance', desc:'Voluntary standards for AGI governance at the firm level. This approach relies on industry initiatives like the Frontier Safety Frameworks from the 2024 Seoul Summit.', link:'https://www.lesswrong.com/posts/B2DFgzG6bptZvin9L/examples-of-self-governance-to-reduce-technology-risk'},
+    {id:'benefits', label:'Benefits & access distribution', desc:'Institutions for distributing the benefits of AI or access to transformative AI systems to all parties. These can diffuse the economic inequality that AI risks creating through windfall clauses (proposed by Nick Bostrom).', link:'https://www.governance.ai/research-paper/the-windfall-clause-distributing-the-benefits-of-ai-for-the-common-good'},
+    {id:'corp', label:'Corporate governance bodies', desc:'Board-level structures for AI risk, either enforced or encouraged by regulators. Similar to Sarbanes-Oxley compliance boards or ESG mandates, these would provide some corporate oversight of AI development risks.', link:'https://www.lesswrong.com/posts/KD4AMfaF3eeWdQwAC/corporate-governance-for-frontier-ai-labs-a-research-agenda'},
     {id:'iaisa', label:'International AI Safety Agency', desc:'A regulatory global agency with international buy-in, similar to the IAEA for nuclear materials. This would provide centralized enforcement of global AI safety standards with real regulatory teeth.', link:'https://academic.oup.com/ia/article/101/4/1483/8141294'},
     {id:'ipccai', label:'Scientific consensus (IPCC-for-AI)', desc:'An international scientific consensus body like the Intergovernmental Panel on Climate Change, designed to provide authoritative scientific assessments of AI risks and capabilities. Proposals include Carnegie\'s GAIO (Global AI Observatory).', link:'https://carnegiecouncil.org/media/article/the-case-for-a-global-ai-observatory-gaio-2023'},
-    {id:'unfccc', label:'Political forum (UNFCCC-style)', desc:'Ongoing norm-setting and review cycles similar to the UN Framework Convention on Climate Change, providing a platform for continuous international negotiation on AI governance. China has recently floated proposals for a "UNFCAI" at the UN.', link:'https://www.fmprc.gov.cn/eng./xw/zyxw/202507/t20250729_11679232.html'},
-    {id:'incident', label:'Emergency response hub', desc:'Rapid, cross-jurisdiction incident response capabilities, analogous to the IAEA Incident Centre or WHO pandemic alert systems. This would enable coordinated response to AI safety incidents across national boundaries.', link:'https://www.eurasiagroup.net/files/upload/GovernanceRegimes.pdf'},
-    {id:'regulator', label:'Independent national regulator', desc:'Establish independent regulators to regulate, monitor and audit AI companies and models, similar to existing regulatory bodies in telecommunications and the energy sector.', link:'https://narrowpath.co'},
-    {id:'coord', label:'Coordination of policy & regulation', desc:'Create a coordination layer for policy and regulation, starting with information-sharing between national AI safety institutes, similar to the Financial Stability Board for banking. Currently ongoing through the G7 Hiroshima Process, INAISE network, and Global AI Governance Initiative.', link:'https://www.nist.gov/system/files/documents/2024/11/20/Mission%20Statement%20-%20International%20Network%20of%20AISIs.pdf'},
-    {id:'domestic', label:'Domestic AI regulators (existing)', desc:'Support national-level agencies using existing regulatory structures, such as the EU AI Act implementation through national agencies, China\'s CAC interim measures, or the UK\'s multi-regulator taskforce.', link:'https://arxiv.org/html/2507.06379'},
+    {id:'unfccc', label:'Political forum (UNFCCC-style)', desc:'Ongoing norm-setting and review cycles similar to the UN Framework Convention on Climate Change, providing a platform for continuous international negotiation on AI governance. This could be held through the UN, or through a new international institution.', link:'https://www.fmprc.gov.cn/eng./xw/zyxw/202507/t20250729_11679232.html'},
+    {id:'incident', label:'Emergency response hub', desc:'Rapid, cross-jurisdiction incident response capabilities, analogous to the IAEA Incident Centre or WHO pandemic alert systems. This would allows more coordinated responses to AI safety incidents across national boundaries.', link:'https://www.eurasiagroup.net/files/upload/GovernanceRegimes.pdf'},
+    {id:'regulator', label:'Independent national regulator', desc:'New independent regulators to regulate, monitor and audit AI companies and models, similar to existing regulatory bodies in telecommunications and the energy sector.', link:'https://narrowpath.co'},
+    {id:'coord', label:'Coordination of policy & regulation', desc:'A coordination layer for policy and regulation, starting with information-sharing between national AI safety institutes, similar to the Financial Stability Board for banking. Currently ongoing through the G7 Hiroshima Process, INAISE network, and Global AI Governance Initiative.', link:'https://www.nist.gov/system/files/documents/2024/11/20/Mission%20Statement%20-%20International%20Network%20of%20AISIs.pdf'},
+    {id:'domestic', label:'Domestic AI regulators (existing)', desc:'Support for national-level agencies using existing regulatory structures, such as the EU AI Act implementation through national agencies, China\'s CAC interim measures, or the UK\'s multi-regulator taskforce.', link:'https://arxiv.org/html/2507.06379'},
     {id:'cern', label:'International Joint Research (CERN for AI)', desc:'Joint, multipolar development organization for AGI research, similar to CERN for particle physics or ITER for nuclear fusion. This would enable shared international research while managing risks through collective oversight.', link:'https://hai.stanford.edu/white-paper-enhancing-international-cooperation-ai-research-case-multilateral-ai-research-institute'},
-    {id:'embed', label:'Embedding in existing institutions', desc:'Using existing institutions for AI governance by adding "bolt-on" provisions to organizations like the WTO, ISO/IEC standards bodies, or UN agencies. This leverages established diplomatic channels and expertise. It\'s already happening through ISO/IEC AI committees and G7 processes.', link:'https://www.iso.org/technical-committees.html'}
+    {id:'embed', label:'Embedding in existing institutions', desc:'Support for existing institutions for AI governance by adding "bolt-on" provisions to organizations like the WTO, ISO/IEC standards bodies, or UN agencies. This leverages established diplomatic channels and expertise. It\'s already happening through ISO/IEC AI committees and G7 processes.', link:'https://www.iso.org/technical-committees.html'}
   ],
   mechanisms: [
-    {id:'auditor', label:'Auditor certification regimes', desc:'Certification schemes to train and verify auditing bodies, similar to financial audit firms (Big Four) or ISO 27001 auditors. The EU AI Act sketches auditor roles, and industry coalitions like the Cloud Security Alliance are developing frameworks.', link:'https://cloudsecurityalliance.org/blog/2025/05/08/iso-42001-lessons-learned-from-auditing-and-implementing-the-framework'},
+    {id:'auditor', label:'Auditor certification regimes', desc:'Certification schemes to train and verify auditing bodies, similar to financial audit firms (Big Four) or ISO 27001 auditors. ', link:'https://cloudsecurityalliance.org/blog/2025/05/08/iso-42001-lessons-learned-from-auditing-and-implementing-the-framework'},
     {id:'liability', label:'Liability mechanisms', desc:'Civil or criminal responsibility for certain AI-related harms, building on existing product liability law like the EU Product Liability Directive. This creates legal accountability for AI companies when their systems cause damage.', link:'https://www.europarl.europa.eu/RegData/etudes/BRIE/2023/739341/EPRS_BRI(2023)739341_EN.pdf'},
-    {id:'whistle', label:'Whistleblower protections', desc:'Instituting protections at a domestic level for whistleblowers at AI labs or other AI infrastructure organizations, similar to US/UK whistleblower laws (Sarbanes-Oxley, SEC). The "Right To Warn" initiative and EU AI Act mention such protections.', link:'https://righttowarn.ai/'},
-    {id:'market', label:'Market-shaping mechanisms', desc:'Use mechanisms like prizes and advance market commitments to incentivize broad dissemination of safety features, similar to AMCs for vaccines or clean-tech subsidies. This approach leverages market incentives to promote safety research and deployment.', link:'https://www.ucl.ac.uk/bartlett/public-purpose/publications/2023/jan/collective-response-our-global-challenges-common-good-and-market-shaping'},
-    {id:'frontier', label:'Frontier Safety Frameworks', desc:'Frontier labs pledge voluntarily to abide by certain safety principles, similar to Responsible Care chemical industry pledges. These voluntary commitments were made at 2023-24 AI Summits (UK, Seoul) by leading AI companies.', link:'https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024/frontier-ai-safety-commitments-ai-seoul-summit-2024'},
-    {id:'predeploy', label:'Pre-deployment evaluation', desc:'Safety tests, evaluations, and red-teaming before AI system deployment, similar to FDA drug trials or product safety testing. Referenced in the EU AI Act, US voluntary commitments, and Anthropic\'s RSPs.', link:'https://www.mofa.go.jp/files/100573473.pdf'},
-    {id:'transparency', label:'Mandatory transparency reports', desc:'Labs are obliged to submit regular reports to a national or international body, similar to environmental reporting mandates. The EU AI Act requires transparency filings, and various US proposals exist.', link:'https://futurium.ec.europa.eu/pt/european-ai-alliance/document/navigating-article-5-eu-ai-act-what-enterprises-need-know'},
-    {id:'prohibit', label:'Sector-specific prohibitions', desc:'Limiting use of AI in specific high-risk sectors like biotech, military applications, or autonomous weapons, similar to bioweapons bans. The EU AI Act includes high-risk domain prohibitions, and NGO campaigns like "Stop Killer Robots" advocate for such restrictions.', link:'https://www.stopkillerrobots.org/'},
-    {id:'incidentreg', label:'Incident reporting registry', desc:'Shared error disclosure system similar to aviation safety reporting systems, cybersecurity breach notifications, or IAEA incident reporting. The OECD and EU are working on harmonized AI incident reporting frameworks.', link:'https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/02/towards-a-common-reporting-framework-for-ai-incidents_8c488fdb/f326d4ac-en.pdf'},
-    {id:'modelreg', label:'Model registry', desc:'Registering AI models and their use-cases, similar to chemical inventories or aircraft registries. EU AI Act Article 49 establishes this framework, with additional proposals from governance researchers.', link:'https://www.convergenceanalysis.org/research/ai-model-registries-a-foundational-tool-for-ai-governance'},
+    {id:'whistle', label:'Whistleblower protections', desc:'Instituting protections at a domestic level for whistleblowers at AI labs or other AI infrastructure organizations, similar to US/UK whistleblower laws.', link:'https://righttowarn.ai/'},
+    {id:'market', label:'Market-shaping mechanisms', desc:'Market mechanisms like prizes and advance market commitments to incentivise broad dissemination of safety features, similar to advance market commitments for vaccines or clean-tech subsidies. This approach leverages market incentives to promote safety research and deployment.', link:'https://www.ucl.ac.uk/bartlett/public-purpose/publications/2023/jan/collective-response-our-global-challenges-common-good-and-market-shaping'},
+    {id:'frontier', label:'Frontier Safety Frameworks', desc:'Frontier labs pledge voluntarily to abide by certain safety principles, similar to Responsible Care chemical industry pledges. These would build on voluntary commitments made at 2023-24 AI Summits (UK, Seoul) by leading AI companies.', link:'https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024/frontier-ai-safety-commitments-ai-seoul-summit-2024'},
+    {id:'predeploy', label:'Pre-deployment evaluation', desc:'Safety tests, evaluations, and red-teaming before AI system deployment, similar to FDA drug trials or product safety testing.', link:'https://www.mofa.go.jp/files/100573473.pdf'},
+    {id:'transparency', label:'Mandatory transparency reports', desc:'Labs are obliged to submit regular reports to a national or international body, similar to environmental reporting mandates, as exist in the EU AI Act.', link:'https://futurium.ec.europa.eu/pt/european-ai-alliance/document/navigating-article-5-eu-ai-act-what-enterprises-need-know'},
+    {id:'prohibit', label:'Sector-specific prohibitions', desc:'Limiting use of AI in specific high-risk sectors like biotech, military applications, or autonomous weapons, similar to bioweapons bans.', link:'https://www.stopkillerrobots.org/'},
+    {id:'incidentreg', label:'Incident reporting registry', desc:'Shared error disclosure system similar to aviation safety reporting systems, cybersecurity breach notifications, or IAEA incident reporting.', link:'https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/02/towards-a-common-reporting-framework-for-ai-incidents_8c488fdb/f326d4ac-en.pdf'},
+    {id:'modelreg', label:'Model registry', desc:'Registering AI models and their use-cases, similar to chemical inventories or aircraft registries. EU AI Act Article 49 establishes this framework.', link:'https://www.convergenceanalysis.org/research/ai-model-registries-a-foundational-tool-for-ai-governance'},
     {id:'standards', label:'Standard setting', desc:'Voluntary norms to encourage industry standards through bodies like ISO, IEC, or W3C. Currently happening through ISO/IEC AI committees, G7 Hiroshima guidelines, and the ISO 42001 standard.', link:'https://www.iso.org/committee/6794475.html'},
-    {id:'staged', label:'Staged capability thresholds', desc:'Mechanisms to agree to pause development or tighten rules at specific capability milestones, similar to arms-control treaties tied to missile counts or Basel banking accords. There\'s increasing traction for compute thresholds in policy discussions and the EU AI Act debate.', link:'https://law-ai.org/the-role-of-compute-thresholds-for-ai-governance/'},
-    {id:'licensing', label:'Licensing', desc:'Approvals for AI models based on certain requirements, such as compute thresholds or capability tests, similar to aviation licenses or nuclear plant licensing. The EU AI Act includes prototypes of this approach, and China\'s CAC has a licensing regime.', link:'https://data.consilium.europa.eu/doc/document/ST-5662-2024-INIT/en/pdf'}
+    {id:'staged', label:'Staged capability thresholds', desc:'Mechanisms to agree to pause development or tighten rules at specific capability milestones, similar to arms-control treaties tied to missile counts or Basel banking accords.', link:'https://law-ai.org/the-role-of-compute-thresholds-for-ai-governance/'},
+    {id:'licensing', label:'Licensing', desc:'Approvals for AI models based on certain requirements, such as compute thresholds or capability tests, similar to aviation licenses or nuclear plant licensing.', link:'https://data.consilium.europa.eu/doc/document/ST-5662-2024-INIT/en/pdf'}
   ],
   controls: [
     {id:'energy', label:'Energy/Power-use monitoring', desc:'Using monitoring of utilities to observe high power usage associated with GPU clusters, similar to industrial power audits or cryptocurrency mining crackdowns. Proposed in "Compute at Scale" research, with some Chinese provinces already monitoring power anomalies.', link:'https://arxiv.org/abs/2311.02651'},
-    {id:'killswitch', label:'Kill-switch protocols', desc:'Technical mechanisms to enable emergency suspension of training runs or inference processes, similar to nuclear "permissive action links" or emergency stop systems in aviation. Some mention exists in EU AI Act and safety pledges, but mostly conceptual with no technical standards.', link:'https://www.lesswrong.com/posts/pvfr5FqcnA7txDPZm/non-technical-strategies-for-confronting-a-human-level-ai'},
-    {id:'export', label:'Export controls', desc:'Limiting the export of advanced chips, compute resources, or specialized talent, similar to nuclear dual-use export controls or semiconductor sanctions (COCOM, Wassenaar). Currently active through US/EU/Japan controls on advanced GPUs and China imposing talent outflow restrictions.', link:'https://www.lesswrong.com/posts/BkzeJZCuCyrQrEMAi/dario-amodei-on-deepseek-and-export-controls'},
-    {id:'hwverify', label:'Hardware-based verification', desc:'On-chip mechanisms to prevent misuse or enforce limitations, similar to Trusted Platform Modules (TPMs), Digital Rights Management (DRM), or IMEI device tracking. Early discussion exists in RAND/GovAI papers, with chipmakers experimenting with secure enclaves.', link:'https://arxiv.org/html/2505.03742v1'},
-    {id:'cloudenf', label:'Cloud-based enforcement', desc:'Using cloud-based mechanisms to control access to certain hardware or processes (like model training or inference), similar to financial KYC requirements enforced through banks or App Store gatekeeping. Growing momentum exists through US/UK policies and GovAI "Governing through the Cloud" research, with pilots for compute usage logging.', link:'https://cdn.governance.ai/Governing-Through-the-Cloud_The-Intermediary-Role-of-Compute-Providers-in-AI-Regulation.pdf'},
-    {id:'computecaps', label:'Technical compute caps', desc:'Using physical limits on chips or architectures to prevent models above a certain size, similar to OPEC production quotas, emissions caps, or bandwidth throttling. Proposed by MIRI and others, with compute thresholds discussed in AI Act drafts and policy papers.', link:'https://arxiv.org/abs/2503.04746'},
-    {id:'swverify', label:'Software-based verification', desc:'Monitors training processes or inference through cryptography, proof-of-learning systems, or blockchain attestations, similar to software license verification, reproducible clinical trials, or financial transaction audit trails.', link:'https://futureoflife.org/ai/verifiable-training-of-ai-models/'}
+    {id:'killswitch', label:'Kill-switch protocols', desc:'Technical mechanisms to enable emergency suspension of training runs or inference processes, similar to nuclear "permissive action links" or emergency stop systems in aviation. ', link:'https://www.lesswrong.com/posts/pvfr5FqcnA7txDPZm/non-technical-strategies-for-confronting-a-human-level-ai'},
+    {id:'export', label:'Export controls', desc:'Limiting the export of advanced chips, compute resources, or specialized talent, similar to nuclear dual-use export controls or existing semiconductor sanctions (CHIPS act).', link:'https://www.lesswrong.com/posts/BkzeJZCuCyrQrEMAi/dario-amodei-on-deepseek-and-export-controls'},
+    {id:'hwverify', label:'Hardware-based verification', desc:'On-chip mechanisms to prevent misuse or enforce limitations, similar to Trusted Platform Modules (TPMs), Digital Rights Management (DRM), or IMEI device tracking. ', link:'https://arxiv.org/html/2505.03742v1'},
+    {id:'cloudenf', label:'Cloud-based enforcement', desc:'Use of cloud-based mechanisms to control access to certain hardware or processes (like model training or inference), similar to financial KYC requirements enforced through banks or App Store gatekeeping..', link:'https://cdn.governance.ai/Governing-Through-the-Cloud_The-Intermediary-Role-of-Compute-Providers-in-AI-Regulation.pdf'},
+    {id:'computecaps', label:'Technical compute caps', desc:'Use of physical limits on chips or architectures to prevent models above a certain size, similar to OPEC production quotas, emissions caps, or bandwidth throttling.', link:'https://arxiv.org/abs/2503.04746'},
+    {id:'swverify', label:'Software-based verification', desc:'Use of cryptography, proof-of-learning systems, or blockchain attestations to monitor training or inference processes, similar to software license verification, reproducible clinical trials, or financial transaction audit trails.', link:'https://futureoflife.org/ai/verifiable-training-of-ai-models/'}
   ]
 };
+
+// Global synergy data loaded from CSV (fallback to hardcoded if loading fails)
+let LOADED_SYNERGY_MATRIX = {};
+let LOADED_CONTRADICTION_PENALTIES = {};
+
+// Global narrative data loaded from CSV
+let LOADED_NARRATIVES = [];
 
 // Global state to store selections across pages
 const strategy = {
@@ -304,6 +311,14 @@ function populateDifficultyPage() {
   const grid = document.getElementById('difficulty-grid');
   if (!grid) return;
   
+  // Map difficulty modes to constable images
+  const constableImages = {
+    optimist: 'images/LeCunConstable.jpg',
+    realist: 'images/AmodeiConstable.jpg', 
+    pessimist: 'images/HintonConstable.png',
+    yudkowskyite: 'images/EliezerConstable.jpg'
+  };
+  
   grid.innerHTML = '';
   
   Object.entries(DIFFICULTY_LEVELS).forEach(([key, difficulty]) => {
@@ -314,8 +329,11 @@ function populateDifficultyPage() {
     card.innerHTML = `
       <input type="radio" name="difficulty" value="${key}" ${strategy.difficulty === key ? 'checked' : ''} id="difficulty-${key}">
       <label for="difficulty-${key}">
-        <h3>${difficulty.label}</h3>
-        <p>${difficulty.desc}</p>
+        <div class="difficulty-header">
+          <img src="${constableImages[key]}" alt="${key} mode" class="difficulty-thumbnail" onerror="this.style.display='none'">
+          <h3>${difficulty.label}</h3>
+        </div>
+        <p>${convertMarkdownToHtml(difficulty.desc)}</p>
       </label>
     `;
     
@@ -349,7 +367,7 @@ function populateResourcesPage() {
       <input type="radio" name="resources" value="${key}" ${strategy.resources === key ? 'checked' : ''} id="resources-${key}">
       <label for="resources-${key}">
         <h3>${resource.label}</h3>
-        <p>${resource.desc}</p>
+        <p>${convertMarkdownToHtml(resource.desc)}</p>
       </label>
     `;
     
@@ -399,7 +417,7 @@ function createOptionCard(item, type, isSelected = false) {
            id="${type}-${item.id}">
     <label for="${type}-${item.id}">
       <h3>${item.label}${costText}</h3>
-      <p>${item.desc}</p>
+      <p>${convertMarkdownToHtml(item.desc)}</p>
       ${linkElement}
     </label>
   `;
@@ -604,7 +622,7 @@ const SYNERGY_MATRIX = {
   'export_computecaps': 0.13, // Export controls + compute caps
   'export_swverify': 0.12, // Export controls + software verification
   'export_cloudenf': 0.14, // Export controls + cloud enforcement
-  'hwverify_computecaps': 0.11, // Hardware verification + compute caps
+  'hwverify_staged': 0.11, // Hardware verification + staged capability thresholds
   'hwverify_swverify': 0.10, // Hardware + software verification
   'hwverify_cloudenf': 0.09, // Hardware verification + cloud enforcement
   'cloudenf_swverify': 0.09, // Cloud enforcement + software verification
@@ -727,6 +745,13 @@ function calculateStrategyEffectiveness() {
   const tempModifier = (temp / 100) * 0.3 - 0.15; // -0.15 to +0.15
   let adjustedRate = baseRate + tempModifier;
   
+  // Special Yudkowsky mode logic: only Global Moratorium has a real chance
+  let yudkowskyPenalty = 0;
+  if (strategy.difficulty === 'yudkowskyite' && strategy.posture !== 'moratorium') {
+    yudkowskyPenalty = -0.18; // Severe penalty for non-moratorium strategies in Yudkowsky mode
+    adjustedRate += yudkowskyPenalty;
+  }
+  
   // Calculate synergy bonuses
   let synergyBonus = 0;
   const allSelections = [strategy.posture, ...strategy.institutions, ...strategy.mechanisms, ...strategy.controls];
@@ -736,7 +761,7 @@ function calculateStrategyEffectiveness() {
     for (let j = i + 1; j < allSelections.length; j++) {
       const key1 = `${allSelections[i]}_${allSelections[j]}`;
       const key2 = `${allSelections[j]}_${allSelections[i]}`;
-      const bonus = SYNERGY_MATRIX[key1] || SYNERGY_MATRIX[key2] || 0;
+      const bonus = LOADED_SYNERGY_MATRIX[key1] || LOADED_SYNERGY_MATRIX[key2] || 0;
       synergyBonus += bonus;
     }
   }
@@ -747,7 +772,7 @@ function calculateStrategyEffectiveness() {
     for (let j = i + 1; j < allSelections.length; j++) {
       const key1 = `${allSelections[i]}_${allSelections[j]}`;
       const key2 = `${allSelections[j]}_${allSelections[i]}`;
-      const penalty = CONTRADICTION_PENALTIES[key1] || CONTRADICTION_PENALTIES[key2] || 0;
+      const penalty = LOADED_CONTRADICTION_PENALTIES[key1] || LOADED_CONTRADICTION_PENALTIES[key2] || 0;
       contradictionPenalty += penalty;
     }
   }
@@ -776,6 +801,7 @@ function calculateStrategyEffectiveness() {
     successRate: finalRate,
     baseRate: baseRate,
     tempModifier: tempModifier,
+    yudkowskyPenalty: yudkowskyPenalty,
     synergyBonus: synergyBonus,
     contradictionPenalty: contradictionPenalty,
     requirementPenalty: requirementPenalty,
@@ -791,12 +817,38 @@ function runMonteCarloSimulation(trials = 1000) {
   
   let successes = 0;
   const outcomes = [];
+  const outcomeCategories = {
+    major_success: 0,
+    moderate_success: 0, 
+    moderate_failure: 0,
+    catastrophic_failure: 0
+  };
   
   for (let i = 0; i < trials; i++) {
     const roll = Math.random();
     const success = roll < successRate;
     if (success) successes++;
     outcomes.push(success);
+    
+    // Categorize this individual trial based on where it lands
+    // We'll distribute outcomes to match the game's success rate categories
+    if (roll < Math.min(successRate, 0.7)) {
+      // If we succeeded and our success rate suggests major success territory
+      if (successRate >= 0.7) {
+        outcomeCategories.major_success++;
+      } else {
+        outcomeCategories.moderate_success++;
+      }
+    } else if (roll < Math.min(successRate, 1.0)) {
+      // Additional successes beyond 70% threshold
+      outcomeCategories.moderate_success++;
+    } else if (roll < 0.7) {
+      // Failed, but in what would be moderate failure range
+      outcomeCategories.moderate_failure++;
+    } else {
+      // Failed in catastrophic range
+      outcomeCategories.catastrophic_failure++;
+    }
   }
   
   // Calculate confidence intervals
@@ -812,7 +864,8 @@ function runMonteCarloSimulation(trials = 1000) {
       lower: Math.max(0, successRatio - margin),
       upper: Math.min(1, successRatio + margin)
     },
-    effectiveness: effectiveness
+    effectiveness: effectiveness,
+    outcomeCategories: outcomeCategories
   };
 }
 
@@ -856,7 +909,7 @@ function generateSynergyNarrative(synergyBonus, allSelections) {
     for (let j = i + 1; j < selections.length; j++) {
       const key1 = `${selections[i]}_${selections[j]}`;
       const key2 = `${selections[j]}_${selections[i]}`;
-      const bonus = SYNERGY_MATRIX[key1] || SYNERGY_MATRIX[key2] || 0;
+      const bonus = LOADED_SYNERGY_MATRIX[key1] || LOADED_SYNERGY_MATRIX[key2] || 0;
       if (bonus > maxSynergy) {
         maxSynergy = bonus;
         bestPair = [selections[i], selections[j]];
@@ -867,7 +920,7 @@ function generateSynergyNarrative(synergyBonus, allSelections) {
   if (bestPair) {
     const name1 = getItemName(bestPair[0]);
     const name2 = getItemName(bestPair[1]);
-    return ` Your ${name1} successfully synergized with ${name2} to significantly enhance governance effectiveness, creating a multiplicative effect that was greater than the sum of its parts.`;
+    return ` Your ${name1} successfully synergized with ${name2} to significantly enhance governance effectiveness.`;
   }
   
   return "";
@@ -931,6 +984,14 @@ function generateAnalysis(finalRate, synergyBonus, contradictionPenalty, missing
   return narrative;
 }
 
+function convertMarkdownToHtml(text) {
+  // Simple markdown to HTML converter for basic formatting
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // **bold** -> <strong>bold</strong>
+    .replace(/\*(.*?)\*/g, '<em>$1</em>') // *italic* -> <em>italic</em>
+    .replace(/`(.*?)`/g, '<code>$1</code>'); // `code` -> <code>code</code>
+}
+
 async function evaluateStrategy() {
   const outcomeDiv = document.getElementById('outcome-section');
   
@@ -946,37 +1007,30 @@ async function evaluateStrategy() {
   if (successRate >= 0.7) {
     outcome = 'Major Success';
     description = 'Your strategy achieved outstanding results, successfully navigating humanity through the AI transition with minimal casualties and maximum benefit.';
-    imageFile = 'spectacular_success.jpg';
+    imageFile = 'images/spectacular_success.jpg';
     outcomeClass = 'success-high';
   } else if (successRate >= 0.5) {
     outcome = 'Moderate Success';
     description = 'Your strategy generally succeeded in managing AI risks, though some challenges and setbacks occurred along the way.';
-    imageFile = 'mild_success.jpg';
+    imageFile = 'images/mild_success.jpg';
     outcomeClass = 'success-moderate';
   } else if (successRate >= 0.3) {
     outcome = 'Moderate Failure';
     description = 'Your strategy fell short of preventing significant AI-related harms, though it may have prevented even worse outcomes.';
-    imageFile = 'mild_failure.jpg';
+    imageFile = 'images/mild_failure.jpg';
     outcomeClass = 'failure-moderate';
   } else {
     outcome = 'Catastrophic Failure';
     description = 'Your strategy failed catastrophically, leading to severe consequences for humanity in the AI transition.';
-    imageFile = 'spectacular_failure.jpg';
+    imageFile = 'images/spectacular_failure.jpg';
     outcomeClass = 'failure-high';
   }
   
   const totalSelections = strategy.institutions.length + strategy.mechanisms.length + strategy.controls.length;
   const confidenceInterval = simulation.confidenceInterval;
   
-  // Enhance the analysis with LLM if enabled
-  let enhancedAnalysis = effectiveness.analysis;
-  try {
-    // Use simple analysis for LLM to avoid contradictions
-    const simpleAnalysis = generateSimpleAnalysis(effectiveness.successRate, effectiveness.synergyBonus, effectiveness.contradictionPenalty, effectiveness.missingRequirements);
-    enhancedAnalysis = await enhanceAnalysisWithLLM(simpleAnalysis, effectiveness, strategy, outcome);
-  } catch (error) {
-    console.warn('LLM enhancement failed, using original analysis:', error);
-  }
+  // Use CSV-based narrative selection
+  const narrativeText = selectNarrative(strategy.posture, strategy.difficulty, effectiveness.successRate, effectiveness);
   
   outcomeDiv.innerHTML = `
     <div class="outcome-card ${outcomeClass}">
@@ -1002,6 +1056,10 @@ async function evaluateStrategy() {
             <span class="metric-label">Environmental Modifier:</span>
             <span class="metric-value ${effectiveness.tempModifier >= 0 ? 'positive' : 'negative'}">${effectiveness.tempModifier >= 0 ? '+' : ''}${Math.round(effectiveness.tempModifier * 100)}%</span>
           </div>
+          ${effectiveness.yudkowskyPenalty < 0 ? `<div class="metric">
+            <span class="metric-label">Yudkowsky Mode Penalty:</span>
+            <span class="metric-value negative">${Math.round(effectiveness.yudkowskyPenalty * 100)}%</span>
+          </div>` : ''}
           <div class="metric">
             <span class="metric-label">Synergy Bonus:</span>
             <span class="metric-value ${effectiveness.synergyBonus > 0 ? 'positive' : 'neutral'}">+${Math.round(effectiveness.synergyBonus * 100)}%</span>
@@ -1031,9 +1089,20 @@ async function evaluateStrategy() {
         </div>
       </div>
       
-      <div class="strategy-analysis ${enhancedAnalysis !== effectiveness.analysis ? 'enhanced-analysis' : ''}">
+      <div class="strategy-analysis">
         <h4>What actually happened...</h4>
-        <p>${enhancedAnalysis}</p>
+        <p>${convertMarkdownToHtml(narrativeText)}</p>
+      </div>
+      
+      <div class="monte-carlo-viz">
+        <h4>Monte Carlo Simulation Results (${simulation.trials} trials)</h4>
+        <div class="distribution-chart" id="distribution-chart"></div>
+        <div class="chart-legend">
+          <span class="legend-item major-success">Major Success (${simulation.outcomeCategories.major_success} trials)</span>
+          <span class="legend-item moderate-success">Moderate Success (${simulation.outcomeCategories.moderate_success} trials)</span>
+          <span class="legend-item moderate-failure">Moderate Failure (${simulation.outcomeCategories.moderate_failure} trials)</span>
+          <span class="legend-item catastrophic-failure">Catastrophic Failure (${simulation.outcomeCategories.catastrophic_failure} trials)</span>
+        </div>
       </div>
       
       <div class="outcome-stats">
@@ -1050,6 +1119,39 @@ async function evaluateStrategy() {
           <span class="stat-value">${DIFFICULTY_LEVELS[strategy.difficulty]?.label || 'None'}</span>
         </div>
       </div>
+    </div>
+  `;
+  
+  // Draw Monte Carlo distribution chart
+  drawDistributionChart(simulation);
+}
+
+function drawDistributionChart(simulation) {
+  const chart = document.getElementById('distribution-chart');
+  if (!chart) return;
+  
+  const categories = simulation.outcomeCategories;
+  const total = simulation.trials;
+  
+  // Calculate percentages
+  const majorPct = (categories.major_success / total * 100);
+  const moderateSuccessPct = (categories.moderate_success / total * 100);
+  const moderateFailurePct = (categories.moderate_failure / total * 100);
+  const catastrophicPct = (categories.catastrophic_failure / total * 100);
+  
+  // Create four-segment bar chart
+  chart.innerHTML = `
+    <div class="chart-bar">
+      <div class="bar-segment major-success" style="width: ${majorPct}%" title="Major Success: ${categories.major_success} trials"></div>
+      <div class="bar-segment moderate-success" style="width: ${moderateSuccessPct}%" title="Moderate Success: ${categories.moderate_success} trials"></div>
+      <div class="bar-segment moderate-failure" style="width: ${moderateFailurePct}%" title="Moderate Failure: ${categories.moderate_failure} trials"></div>
+      <div class="bar-segment catastrophic-failure" style="width: ${catastrophicPct}%" title="Catastrophic Failure: ${categories.catastrophic_failure} trials"></div>
+    </div>
+    <div class="chart-labels">
+      <span class="label-major-success">${Math.round(majorPct)}%</span>
+      <span class="label-moderate-success">${Math.round(moderateSuccessPct)}%</span>
+      <span class="label-moderate-failure">${Math.round(moderateFailurePct)}%</span>
+      <span class="label-catastrophic-failure">${Math.round(catastrophicPct)}%</span>
     </div>
   `;
 }
@@ -1133,16 +1235,25 @@ function createAnalysisPrompt(rawAnalysis, strategyContext, effectiveness, outco
                      difficultyName.includes('Realist') ? 'a realistic world' : 
                      difficultyName.includes('Pessimist') ? 'a challenging world' : 'a very difficult world';
   
-  return `You are a historian writing about humanity's final chapter in the AI transition. Tell the dramatic story of what happened when world leaders chose a ${postureObj?.label} strategy in ${worldState} with ${resourceName.toLowerCase()} resources.
+  // Create emphasis text based on success/failure
+  const emphasisText = outcome === 'succeeded' 
+    ? (effectiveness.synergyBonus > 0.05 
+        ? `EMPHASIZE: The success was largely due to synergistic effects where different approaches "significantly enhanced governance effectiveness"`
+        : `EMPHASIZE: The success came from effective coordination between different approaches.`)
+    : (effectiveness.contradictionPenalty < -0.1
+        ? `EMPHASIZE: The failure was largely due to contradictions where "conflicting strategies worked against each other rather than in harmony."`
+        : `EMPHASIZE: The failure came from ineffective coordination between different approaches.`);
+  
+  return `TASK: You MUST write exactly 4 sentences. 
+- Sentence 1: Describe the world situation and the leaders' choice of the ${postureObj?.label} strategy in ${worldState} with ${resourceName.toLowerCase()} resources. 
+- Sentence 2: Explain clearly how the main institutional architectures interacted with this strategic posture, showing cause and effect with the outcome. 
+- Sentence 3: Explain how the mechanisms described in "Page 3 and 4" interacted with the strategic posture, and connect this interaction to the outcome. 
+- Sentence 4: State the final outcome, and END the sentence with one of these exact phrases: ${getOutcomeEndings(outcomeLevel)}.
 
-The strategy ultimately ${outcome}. Here's what unfolded:
+${emphasisText}
 
-${rawAnalysis}
-
-Write a compelling 3-sentence story that MUST end with one of these explicit outcomes based on the result level:
-${getOutcomeEndings(outcomeLevel)}
-
-Focus on the human drama and make the final outcome crystal clear. Include specific details about how the various policy choices interacted with each other, explaining the causal chain that led to success or failure. Show why certain strategic combinations created reinforcing loops that either strengthened the governance framework or created fatal contradictions. This is the definitive historical record of humanity's fate.`;
+Include specific details from this analysis: ${rawAnalysis}. 
+Do not add or remove sentences. Do not change the required ending phrase.`;
 }
 
 async function callHuggingFaceAPI(prompt, modelId) {
@@ -1347,8 +1458,139 @@ async function warmUpModel() {
   }
 }
 
+// Narrative Selection System
+function selectNarrative(posture, difficulty, successRate, effectiveness) {
+  // Map difficulty level to narrative difficulty labels
+  const difficultyMap = {
+    'optimist': 'optimist',
+    'realist': 'realist', 
+    'pessimist': 'pessimist',
+    'yudkowskyite': 'yudkowsky'
+  };
+  
+  const difficultyLabel = difficultyMap[difficulty] || 'realist';
+  
+  // Determine success rate range
+  let successRange = '0.0-0.29'; // catastrophic failure
+  if (successRate >= 0.7) successRange = '0.7-1.0';      // major success
+  else if (successRate >= 0.5) successRange = '0.5-0.69'; // moderate success  
+  else if (successRate >= 0.3) successRange = '0.3-0.49'; // moderate failure
+  
+  console.log(`🎯 Selecting narrative: ${posture}/${difficultyLabel}/${successRange} (success: ${Math.round(successRate*100)}%)`);
+  
+  if (LOADED_NARRATIVES.length === 0) {
+    console.error('❌ LOADED_NARRATIVES is EMPTY!');
+  }
+  
+  // Find exact match first
+  let narrative = LOADED_NARRATIVES.find(n => 
+    n.posture === posture && 
+    n.difficulty === difficultyLabel && 
+    n.successRange === successRange
+  );
+  
+  console.log('🔍 Exact match found:', !!narrative);
+  
+  // Fallback to same posture and difficulty with different success rate
+  if (!narrative) {
+    narrative = LOADED_NARRATIVES.find(n => 
+      n.posture === posture && 
+      n.difficulty === difficultyLabel
+    );
+    console.log('🔄 Fallback 1: Same posture+difficulty, different success rate:', !!narrative);
+    if (narrative) {
+      console.log('🔄 Selected fallback narrative:', narrative.posture + '/' + narrative.difficulty + '/' + narrative.successRange, '→', narrative.outcomeCategory);
+    }
+  }
+  
+  // Fallback to same posture with different difficulty
+  if (!narrative) {
+    const matchingPostures = LOADED_NARRATIVES.filter(n => n.posture === posture);
+    console.log(`🔄 Fallback 2: Looking for posture '${posture}' - found ${matchingPostures.length} matches`);
+    narrative = LOADED_NARRATIVES.find(n => n.posture === posture);
+    console.log('🔄 Fallback 2: Same posture, different difficulty:', !!narrative);
+  }
+  
+  // Final fallback to any narrative
+  if (!narrative && LOADED_NARRATIVES.length > 0) {
+    narrative = LOADED_NARRATIVES[0];
+    console.log(`⚠️ EMERGENCY FALLBACK: Using first narrative: ${narrative.posture}/${narrative.difficulty}`);
+    console.log('⚠️ This should only happen if the requested posture doesn\'t exist in the narratives!');
+  }
+  
+  if (narrative) {
+    console.log(`Selected narrative: ${narrative.posture}/${narrative.difficulty}/${narrative.outcomeCategory} (${narrative.narrativeType})`);
+    return narrative.narrativeText;
+  } else {
+    console.error('No narrative found! Using basic fallback.');
+    return `The ${posture} strategy had a ${Math.round(successRate * 100)}% chance of success in this scenario. The approach encountered various challenges and opportunities based on the institutional, regulatory, and technical mechanisms selected. Ultimately, the combination of factors led to the final outcome. **The world's fate was determined by the complex interplay of governance mechanisms and strategic choices.**`;
+  }
+}
+
+// Initialize synergies and narratives from CSV  
+async function loadSynergiesFromCSV() {
+  try {
+    console.log('🔄 Loading synergies from CSV...');
+    const parser = new CSVParser();
+    const synergies = await parser.loadSynergiesCSV('synergies.csv');
+    
+    // Update global synergy variables
+    LOADED_SYNERGY_MATRIX = synergies.matrix;
+    LOADED_CONTRADICTION_PENALTIES = synergies.contradictions;
+    
+    console.log('✅ Synergies loaded successfully:', {
+      positivesynergies: Object.keys(LOADED_SYNERGY_MATRIX).length / 2, // Divide by 2 since we store both directions
+      contradictions: Object.keys(LOADED_CONTRADICTION_PENALTIES).length / 2
+    });
+  } catch (error) {
+    console.error('❌ Failed to load synergies from CSV:', error);
+    
+    // Fall back to hardcoded synergies
+    console.log('🔄 Using fallback hardcoded synergies...');
+    const parser = new CSVParser();
+    const fallbackSynergies = parser.getFallbackSynergies();
+    LOADED_SYNERGY_MATRIX = fallbackSynergies.matrix;
+    LOADED_CONTRADICTION_PENALTIES = fallbackSynergies.contradictions;
+    
+    console.log('✅ Fallback synergies loaded');
+  }
+}
+
+async function loadNarrativesFromCSV() {
+  try {
+    console.log('🔄 Loading narratives from CSV...');
+    const parser = new CSVParser();
+    const narratives = await parser.loadNarrativesCSV('narratives.csv');
+    
+    // Update global narratives variable
+    LOADED_NARRATIVES = narratives;
+    
+    console.log('✅ Narratives loaded successfully:', LOADED_NARRATIVES.length, 'narrative combinations');
+    console.log('First 3 narrative postures:', LOADED_NARRATIVES.slice(0, 3).map(n => n.posture));
+  } catch (error) {
+    console.error('❌ Failed to load narratives from CSV:', error);
+    console.error('Error details:', error.message, error.stack);
+    
+    // Fall back to hardcoded narratives
+    console.log('🔄 Using fallback narratives...');
+    const parser = new CSVParser();
+    const fallbackNarratives = parser.getFallbackNarratives();
+    LOADED_NARRATIVES = fallbackNarratives;
+    
+    console.log('✅ Fallback narratives loaded:', LOADED_NARRATIVES.length);
+    console.log('Fallback postures available:', [...new Set(LOADED_NARRATIVES.map(n => n.posture))]);
+    console.log('Success ranges available:', [...new Set(LOADED_NARRATIVES.map(n => n.successRange))]);
+    console.log('Sample narrative check - laissez/optimist/0.7-1.0:', 
+      LOADED_NARRATIVES.find(n => n.posture === 'laissez' && n.difficulty === 'optimist' && n.successRange === '0.7-1.0') ? 'EXISTS' : 'MISSING');
+  }
+}
+
 // Event listeners
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
+  
+  // Load synergies and narratives first
+  await loadSynergiesFromCSV();
+  await loadNarrativesFromCSV();
   
   // Populate all pages
   populateDifficultyPage();
@@ -1370,25 +1612,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('next-to-page6').addEventListener('click', () => showPage(6));
   document.getElementById('back-to-page5').addEventListener('click', () => showPage(5));
   document.getElementById('complete-strategy').addEventListener('click', () => showResults());
-  
-  // LLM settings event listeners
-  document.getElementById('enhance-analysis').addEventListener('change', function() {
-    const settings = document.getElementById('llm-settings');
-    if (this.checked) {
-      settings.classList.remove('hidden');
-      // Pre-warm the model to reduce loading time later
-      warmUpModel();
-    } else {
-      settings.classList.add('hidden');
-    }
-  });
-
-  // Auto-warm model if enhancement is enabled by default
-  if (document.getElementById('enhance-analysis').checked) {
-    setTimeout(() => {
-      warmUpModel();
-    }, 1000); // Small delay to let the page fully load
-  }
   
   document.getElementById('start-over').addEventListener('click', () => {
     // Reset strategy

@@ -34,27 +34,6 @@
         <p><strong>First, which world are we in?</strong></p>
       </div>
 
-      <!-- LLM Enhancement Options -->
-      <div id="llm-config" class="llm-config-panel">
-        <div class="llm-toggle">
-          <label>
-            <input type="checkbox" id="enhance-analysis" checked>
-            <span class="toggle-text">📝 Enhance final analysis with AI narrative (powered by Hugging Face)</span>
-          </label>
-        </div>
-        <div id="llm-settings" class="llm-settings">
-          <div class="model-select">
-            <label for="llm-model">AI Enhancement Model:</label>
-            <select id="llm-model">
-              <option value="Qwen/Qwen2.5-7B-Instruct">Qwen2.5-7B-Instruct (Advanced)</option>
-              <option value="HuggingFaceTB/SmolLM3-3B">SmolLM3-3B (Backup)</option>
-            </select>
-          </div>
-          <div class="usage-info">
-            <small>🤖 AI enhancement powered by your Hugging Face Pro account</small>
-          </div>
-        </div>
-      </div>
 
       <div class="options-grid" id="difficulty-grid">
         <!-- Difficulty options will be populated by JavaScript -->
@@ -195,6 +174,7 @@
 
 </main>
 
+<script src="src/csv-parser.js?v=1"></script>
 <script src="src/app.js?v=14"></script>
 
 </body>
