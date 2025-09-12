@@ -32,7 +32,9 @@
       "Bash(\"C:\\Users\\jack_\\anaconda3\\python.exe\" backend/app.py)",
       "Bash(start index.html)",
       "Bash(rm:*)",
-      "Bash(gh repo create:*)"
+      "Bash(gh repo create:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(start https://github.com/new)"
     ],
     "deny": [],
     "ask": []
