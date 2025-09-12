@@ -1,19 +1,19 @@
 {
-  "name": "ai-governance-strategy-tool",
+  "name": "ai-governance-strategy-builder",
   "version": "4.0.0",
-  "description": "Interactive strategy simulation for exploring AI governance options and their outcomes",
+  "description": "Interactive strategy builder for exploring AI governance options and their outcomes",
   "main": "index.html",
   "scripts": {
     "start": "python -m http.server 8080",
     "dev": "python -m http.server 8080",
     "serve": "python -m http.server 8080",
-    "test": "start test-browser.html",
+    "test": "echo 'No tests configured'",
     "build": "echo 'No build step required - static files only'",
     "deploy": "gh-pages -d ."
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Jack-Stennett/AI-Governance-Tool.git"
+    "url": "https://github.com/Jack-Stennett/AI-Governance-Strategy-Builder.git"
   },
   "keywords": [
     "ai-governance",
@@ -27,9 +27,9 @@
   "author": "Jack Stennett",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Jack-Stennett/AI-Governance-Tool/issues"
+    "url": "https://github.com/Jack-Stennett/AI-Governance-Strategy-Builder/issues"
   },
-  "homepage": "https://jack-stennett.github.io/AI-Governance-Tool",
+  "homepage": "https://jack-stennett.github.io/AI-Governance-Strategy-Builder",
   "devDependencies": {
     "gh-pages": "^6.1.1"
   },
@@ -47,9 +47,9 @@
     "index.html",
     "src/",
     "assets/",
-    "test-browser.html",
     "README.md",
-    "GAME_DESIGN.md",
-    "DEVELOPMENT_LOG.md"
+    "narratives.csv",
+    "synergies.csv",
+    "package.json"
   ]
 }

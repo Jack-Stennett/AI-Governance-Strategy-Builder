@@ -1,15 +1,14 @@
-# AI Governance Tool - LLM Enhanced Version
+# AI Governance Strategy Builder
 
-An interactive strategic decision-making game for AI governance with AI-powered narrative analysis. This enhanced version uses state-of-the-art language models to transform technical analysis into professional, readable strategic assessments.
+An interactive strategic decision-making game for AI governance. Build comprehensive strategies to navigate the complex challenges of artificial intelligence development and deployment through evidence-based simulation and analysis.
 
 ## 🚀 Features
 
-### 🤖 AI-Enhanced Analysis
-- **LLM-Powered Narratives**: Strategic analysis enhanced by Qwen2.5-72B, Llama-3.1-70B, and other state-of-the-art models
-- **Professional Reporting**: Raw technical analysis transformed into polished, readable strategic assessments
-- **Free Integration**: Uses Hugging Face's free API tier (1000 requests/month)
-- **Smart Pre-loading**: AI models warm up during gameplay for instant results
-- **Graceful Fallback**: Works perfectly with or without AI enhancement
+### 📊 Strategic Analysis
+- **Comprehensive Simulation**: Monte Carlo analysis with 1000+ iteration statistical modeling
+- **Professional Reporting**: Clear, readable strategic assessments and outcome predictions
+- **Evidence-Based Results**: Success rates derived from academic research and expert assessment
+- **Real-Time Feedback**: Immediate analysis of strategy effectiveness and trade-offs
 
 ### 📚 Rich Educational Content
 - **Detailed Descriptions**: Each mechanism includes comprehensive real-world context, historical examples, and current implementations
@@ -24,14 +23,13 @@ An interactive strategic decision-making game for AI governance with AI-powered 
 - **7 Technical Controls**: Hardware verification, export controls, cloud enforcement, compute caps
 
 ### 🔬 Advanced Simulation
-- **Monte Carlo Analysis**: 1000+ iteration statistical modeling for robust outcome predictions
 - **Synergy Detection**: Automatically identifies complementary and contradictory mechanism combinations
 - **Resource Constraints**: Realistic budget ($80B-$200B) and political capital modeling
-- **Evidence-Based Effectiveness**: Success rates derived from academic research and expert assessment
+- **Outcome Visualization**: Canvas-based charts showing probability distributions and success rates
 
 ## Data Sources
 
-The tool integrates data from the `AI_Governance_Mapping.csv` file, which includes:
+The tool integrates data from comprehensive CSV datasets, which include:
 
 - **Academic Literature**: Research papers, policy analyses, and theoretical frameworks
 - **Real-World Examples**: Current implementations and historical precedents  
@@ -41,27 +39,24 @@ The tool integrates data from the `AI_Governance_Mapping.csv` file, which includ
 ## File Structure
 
 ```
-AI-Governance-Tool/
+AI-Governance-Strategy-Builder/
 ├── index.html              # Main application interface
-├── app.js                  # Core application logic and simulation engine
-├── styles.css              # Styling and responsive design
-├── csv-parser.js           # CSV data integration module
-├── AI_Governance_Mapping.csv # Comprehensive governance data
-├── test-browser.html       # Browser compatibility testing
+├── src/
+│   ├── app.js              # Core application logic and simulation engine
+│   ├── styles.css          # Styling and responsive design
+│   └── csv-parser.js       # CSV data integration module
+├── assets/                 # Data and static resources
+├── narratives.csv          # Comprehensive governance data
+├── synergies.csv          # Strategy interaction data
 └── README.md              # This documentation
 ```
 
 ## 🎮 How to Play
 
 ### Quick Start (No Setup Required)
-1. Visit: **https://jack-stennett.github.io/AI-Governance-Tool-LLM-Enabled**
-2. Check "Enhance analysis with AI" on the first page (optional)
+1. Visit: **https://jack-stennett.github.io/AI-Governance-Strategy-Builder**
+2. Select your difficulty level and strategic approach
 3. Start building your AI governance strategy!
-
-### Full AI Enhancement Setup
-1. **Get Free API Key** (recommended): Visit https://huggingface.co/settings/tokens
-2. **Enter API Key**: Paste it on the first page for unlimited AI-enhanced analysis
-3. **Choose Model**: Select Qwen2.5-72B-Instruct (recommended) or Llama-3.1-70B
 
 ## How to Use
 
@@ -123,12 +118,12 @@ AI-Governance-Tool/
 ## Customization
 
 ### Adding New Options
-1. Edit `AI_Governance_Mapping.csv` with new entries
+1. Edit `narratives.csv` and `synergies.csv` with new entries
 2. Follow the existing column structure and data format
-3. Refresh the browser to see changes (may require server restart)
+3. Refresh the browser to see changes
 
 ### Modifying Scoring
-- Edit the `evaluateOnce()` function in `app.js`
+- Edit the `evaluateOnce()` function in `src/app.js`
 - Adjust base scores, penalties, and bonuses as needed
 - Update synergy and contradiction definitions in `SPEC` object
 
