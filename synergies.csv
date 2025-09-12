@@ -1,0 +1,100 @@
+Option1_ID,Option1_Name,Option1_Category,Option2_ID,Option2_Name,Option2_Category,Synergy_Bonus,Synergy_Type,Description
+iaisa,International AI Safety Agency,Institutions,transparency,Mandatory transparency reports,Mechanisms,0.15,International coordination,International agency + transparency
+iaisa,International AI Safety Agency,Institutions,auditor,Auditor certification regimes,Mechanisms,0.12,International coordination,International agency + auditing
+iaisa,International AI Safety Agency,Institutions,licensing,Licensing,Mechanisms,0.16,International coordination,International agency + licensing
+iaisa,International AI Safety Agency,Institutions,modelreg,Model registry,Mechanisms,0.13,International coordination,International agency + model registry
+iaisa,International AI Safety Agency,Institutions,incidentreg,Incident reporting registry,Mechanisms,0.11,International coordination,International agency + incident reporting
+coord,Coordination of policy & regulation,Institutions,ipccai,Scientific consensus (IPCC-for-AI),Institutions,0.11,International coordination,Policy coordination + scientific consensus
+coord,Coordination of policy & regulation,Institutions,transparency,Mandatory transparency reports,Mechanisms,0.08,International coordination,Policy coordination + transparency
+coord,Coordination of policy & regulation,Institutions,standards,Standard setting,Mechanisms,0.09,International coordination,Policy coordination + standards
+ipccai,Scientific consensus (IPCC-for-AI),Institutions,standards,Standard setting,Mechanisms,0.07,International coordination,Scientific consensus + standards
+unfccc,Political forum (UNFCCC-style),Institutions,coord,Coordination of policy & regulation,Institutions,0.06,International coordination,Political forum + coordination
+regulator,Independent national regulator,Institutions,liability,Liability mechanisms,Mechanisms,0.10,Regulatory enforcement,Domestic regulator + liability
+regulator,Independent national regulator,Institutions,licensing,Licensing,Mechanisms,0.14,Regulatory enforcement,Domestic regulator + licensing
+regulator,Independent national regulator,Institutions,auditor,Auditor certification regimes,Mechanisms,0.13,Regulatory enforcement,Domestic regulator + auditing
+regulator,Independent national regulator,Institutions,transparency,Mandatory transparency reports,Mechanisms,0.09,Regulatory enforcement,Domestic regulator + transparency
+regulator,Independent national regulator,Institutions,predeploy,Pre-deployment evaluation,Mechanisms,0.11,Regulatory enforcement,Domestic regulator + pre-deployment
+regulator,Independent national regulator,Institutions,staged,Staged capability thresholds,Mechanisms,0.12,Regulatory enforcement,Domestic regulator + staged thresholds
+regulator,Independent national regulator,Institutions,modelreg,Model registry,Mechanisms,0.10,Regulatory enforcement,Domestic regulator + model registry
+domestic,Domestic AI regulators (existing),Institutions,regulator,Independent national regulator,Institutions,0.08,Regulatory enforcement,Existing regulators + new regulator
+export,Export controls,Controls,hwverify,Hardware-based verification,Controls,0.16,Technical control,Export controls + hardware verification
+export,Export controls,Controls,computecaps,Technical compute caps,Controls,0.13,Technical control,Export controls + compute caps
+export,Export controls,Controls,swverify,Software-based verification,Controls,0.12,Technical control,Export controls + software verification
+export,Export controls,Controls,cloudenf,Cloud-based enforcement,Controls,0.14,Technical control,Export controls + cloud enforcement
+hwverify,Hardware-based verification,Controls,staged,Staged capability thresholds,Mechanisms,0.11,Technical control,Hardware verification + staged capability thresholds
+hwverify,Hardware-based verification,Controls,swverify,Software-based verification,Controls,0.10,Technical control,Hardware + software verification
+hwverify,Hardware-based verification,Controls,cloudenf,Cloud-based enforcement,Controls,0.09,Technical control,Hardware verification + cloud enforcement
+cloudenf,Cloud-based enforcement,Controls,swverify,Software-based verification,Controls,0.09,Technical control,Cloud enforcement + software verification
+computecaps,Technical compute caps,Controls,swverify,Software-based verification,Controls,0.08,Technical control,Compute caps + software verification
+energy,Energy/Power-use monitoring,Controls,hwverify,Hardware-based verification,Controls,0.07,Technical control,Energy monitoring + hardware verification
+killswitch,Kill-switch protocols,Controls,hwverify,Hardware-based verification,Controls,0.08,Technical control,Kill switch + hardware verification
+liability,Liability mechanisms,Mechanisms,whistle,Whistleblower protections,Mechanisms,0.07,Legal/compliance,Liability + whistleblower protections
+liability,Liability mechanisms,Mechanisms,auditor,Auditor certification regimes,Mechanisms,0.09,Legal/compliance,Liability + auditing
+liability,Liability mechanisms,Mechanisms,transparency,Mandatory transparency reports,Mechanisms,0.08,Legal/compliance,Liability + transparency
+whistle,Whistleblower protections,Mechanisms,transparency,Mandatory transparency reports,Mechanisms,0.06,Legal/compliance,Whistleblower + transparency
+whistle,Whistleblower protections,Mechanisms,incidentreg,Incident reporting registry,Mechanisms,0.07,Legal/compliance,Whistleblower + incident reporting
+auditor,Auditor certification regimes,Mechanisms,transparency,Mandatory transparency reports,Mechanisms,0.10,Legal/compliance,Auditing + transparency
+auditor,Auditor certification regimes,Mechanisms,predeploy,Pre-deployment evaluation,Mechanisms,0.11,Legal/compliance,Auditing + pre-deployment
+auditor,Auditor certification regimes,Mechanisms,staged,Staged capability thresholds,Mechanisms,0.09,Legal/compliance,Auditing + staged thresholds
+auditor,Auditor certification regimes,Mechanisms,standards,Standard setting,Mechanisms,0.08,Legal/compliance,Auditing + standards
+transparency,Mandatory transparency reports,Mechanisms,incidentreg,Incident reporting registry,Mechanisms,0.08,Monitoring and evaluation,Transparency + incident reporting
+transparency,Mandatory transparency reports,Mechanisms,modelreg,Model registry,Mechanisms,0.07,Monitoring and evaluation,Transparency + model registry
+predeploy,Pre-deployment evaluation,Mechanisms,staged,Staged capability thresholds,Mechanisms,0.12,Monitoring and evaluation,Pre-deployment + staged thresholds
+predeploy,Pre-deployment evaluation,Mechanisms,standards,Standard setting,Mechanisms,0.09,Monitoring and evaluation,Pre-deployment + standards
+staged,Staged capability thresholds,Mechanisms,licensing,Licensing,Mechanisms,0.11,Monitoring and evaluation,Staged thresholds + licensing
+modelreg,Model registry,Mechanisms,incidentreg,Incident reporting registry,Mechanisms,0.06,Monitoring and evaluation,Model registry + incident reporting
+standards,Standard setting,Mechanisms,licensing,Licensing,Mechanisms,0.08,Monitoring and evaluation,Standards + licensing
+moratorium,Global Moratorium,Postures,nonprolif,Non-proliferation,Postures,0.18,Strategic posture,Global moratorium + non-proliferation
+moratorium,Global Moratorium,Postures,export,Export controls,Controls,0.15,Strategic posture,Global moratorium + export controls
+moratorium,Global Moratorium,Postures,iaisa,International AI Safety Agency,Institutions,0.14,Strategic posture,Global moratorium + international agency
+cooperate,Cooperative development,Postures,cern,International Joint Research (CERN for AI),Institutions,0.14,Strategic posture,Cooperative development + joint research
+cooperate,Cooperative development,Postures,benefits,Benefits & access distribution,Institutions,0.12,Strategic posture,Cooperative development + benefit distribution
+cooperate,Cooperative development,Postures,transparency,Mandatory transparency reports,Mechanisms,0.10,Strategic posture,Cooperative development + transparency
+nonprolif,Non-proliferation,Postures,export,Export controls,Controls,0.13,Strategic posture,Non-proliferation + export controls
+nonprolif,Non-proliferation,Postures,licensing,Licensing,Mechanisms,0.11,Strategic posture,Non-proliferation + licensing
+stratadv,Strategic advantage,Postures,export,Export controls,Controls,0.12,Strategic posture,Strategic advantage + export controls
+stratadv,Strategic advantage,Postures,domestic,Domestic AI regulators (existing),Institutions,0.10,Strategic posture,Strategic advantage + domestic regulation
+clubs,AI clubs / blocs,Postures,coord,Coordination of policy & regulation,Institutions,0.09,Strategic posture,AI clubs + policy coordination
+dacc,D/Acc (defensive accelerationism),Postures,market,Market-shaping mechanisms,Mechanisms,0.08,Strategic posture,Defensive acceleration + market mechanisms
+market,Market-shaping mechanisms,Mechanisms,benefits,Benefits & access distribution,Institutions,0.10,Economic and incentive,Market mechanisms + benefit distribution
+market,Market-shaping mechanisms,Mechanisms,standards,Standard setting,Mechanisms,0.07,Economic and incentive,Market mechanisms + standards
+benefits,Benefits & access distribution,Institutions,cern,International Joint Research (CERN for AI),Institutions,0.09,Economic and incentive,Benefit distribution + joint research
+corp,Corporate governance bodies,Institutions,liability,Liability mechanisms,Mechanisms,0.08,Corporate governance,Corporate governance + liability
+corp,Corporate governance bodies,Institutions,auditor,Auditor certification regimes,Mechanisms,0.10,Corporate governance,Corporate governance + auditing
+corp,Corporate governance bodies,Institutions,transparency,Mandatory transparency reports,Mechanisms,0.09,Corporate governance,Corporate governance + transparency
+corp,Corporate governance bodies,Institutions,whistle,Whistleblower protections,Mechanisms,0.07,Corporate governance,Corporate governance + whistleblower
+self,Self-governance,Institutions,corp,Corporate governance bodies,Institutions,0.06,Corporate governance,Self-governance + corporate governance
+self,Self-governance,Institutions,standards,Standard setting,Mechanisms,0.05,Corporate governance,Self-governance + standards
+frontier,Frontier Safety Frameworks,Mechanisms,self,Self-governance,Institutions,0.04,Corporate governance,Frontier frameworks + self-governance
+frontier,Frontier Safety Frameworks,Mechanisms,corp,Corporate governance bodies,Institutions,0.05,Corporate governance,Frontier frameworks + corporate governance
+incident,Emergency response hub,Institutions,killswitch,Kill-switch protocols,Controls,0.08,Emergency response,Emergency response + kill switch
+incident,Emergency response hub,Institutions,energy,Energy/Power-use monitoring,Controls,0.06,Emergency response,Emergency response + energy monitoring
+incident,Emergency response hub,Institutions,coord,Coordination of policy & regulation,Institutions,0.07,Emergency response,Emergency response + coordination
+cloudenf,Cloud-based enforcement,Controls,kyc,Account-level KYC,Mechanisms,0.12,Cloud obligations,Provider verifies organization identity and use cases
+cloudenf,Cloud-based enforcement,Controls,sovereign-logging,Sovereign logging escrow,Mechanisms,0.14,Cloud obligations,Tamper-evident logs provided to regulator
+cloudenf,Cloud-based enforcement,Controls,regional-pin,Regional pinning,Mechanisms,0.10,Cloud obligations,Jurisdictional enforcement viability through geographic constraints
+contentprov,Content provenance/watermarking,Mechanisms,transparency,Mandatory transparency reports,Mechanisms,0.08,Provenance & watermarking,Content provenance enhances transparency reporting
+contentprov,Content provenance/watermarking,Mechanisms,incidentreg,Incident reporting registry,Mechanisms,0.12,Provenance & watermarking,Faster takedown and attribution through provenance tracking
+modelcard,Model cards/evaluations,Mechanisms,standards,Standard setting,Mechanisms,0.08,Provenance & watermarking,Baseline disclosure requirements for model documentation
+dataprov,Training data provenance,Mechanisms,auditor,Auditor certification regimes,Mechanisms,0.10,Data governance,Auditors can verify training data sources and quality
+dataprov,Training data provenance,Mechanisms,liability,Liability mechanisms,Mechanisms,0.12,Data governance,Clear chain of custody enables clearer fault attribution
+synthfilter,Synthetic data controls,Mechanisms,predeploy,Pre-deployment evaluation,Mechanisms,0.09,Data governance,Synthetic data controls integrated into pre-deployment testing
+runtime-mon,Runtime monitoring,Controls,incidentreg,Incident reporting registry,Mechanisms,0.14,Post-deployment monitoring,Red-flag runtime telemetry enables faster incident detection
+runtime-mon,Runtime monitoring,Controls,killswitch,Kill-switch protocols,Controls,0.16,Post-deployment monitoring,Runtime monitoring can trigger automated kill switches
+postdeploy,Periodic re-evaluations,Mechanisms,staged,Staged capability thresholds,Mechanisms,0.11,Post-deployment monitoring,Regular re-evaluation at capability milestones
+whistle,Whistleblower protections,Mechanisms,safeharbour,Safe harbour provisions,Mechanisms,0.08,Incentives & safe harbours,Liability shield encourages prompt reporting
+auditor,Auditor certification regimes,Mechanisms,insure,Mandatory liability insurance,Mechanisms,0.10,Incentives & safe harbours,Professional indemnity and tech liability insurance requirements
+liability,Liability mechanisms,Mechanisms,bounties,Red-team bounties,Mechanisms,0.09,Incentives & safe harbours,Bounty programs linked to responsible disclosure
+procure,Public procurement requirements,Mechanisms,standards,Standard setting,Mechanisms,0.12,Procurement & standards,Government purchasing power drives standards adoption
+procure,Public procurement requirements,Mechanisms,auditor,Auditor certification regimes,Mechanisms,0.11,Procurement & standards,Approved auditor list gates public spending
+energy,Energy/Power-use monitoring,Controls,cloudenf,Cloud-based enforcement,Controls,0.13,Energy/compute nexus,Metered enforcement through cloud infrastructure
+energy,Energy/Power-use monitoring,Controls,computecaps,Technical compute caps,Controls,0.14,Energy/compute nexus,Physical power caps combined with billing caps
+energy,Energy/Power-use monitoring,Controls,incidentreg,Incident reporting registry,Mechanisms,0.08,Energy/compute nexus,Power spike anomalies trigger incident reports
+appdist,Model/app distribution gates,Mechanisms,licensing,Licensing,Mechanisms,0.12,Distribution controls,Distribution platforms enforce licensing requirements
+modelreg,Model registry,Mechanisms,release-policy,Open weights exception framework,Mechanisms,0.06,Distribution controls,Registry tracks open-weight model exceptions
+incident,Emergency response hub,Institutions,regulator,Independent national regulator,Institutions,0.09,Crisis management,Statutory escalation path for serious incidents
+incident,Emergency response hub,Institutions,coord,Coordination of policy & regulation,Institutions,0.11,Crisis management,Cross-border incident response protocols
+killswitch,Kill-switch protocols,Controls,licensing,Licensing,Mechanisms,0.10,Crisis management,Kill-switch capability as mandatory licensing condition
+moratorium,Global Moratorium,Postures,dacc,D/Acc (defensive accelerationism),Postures,-0.12,Strategic contradictions,Moratorium contradicts defensive acceleration approach
+release-policy,Open weights exception framework,Mechanisms,nonprolif,Non-proliferation,Postures,-0.08,Strategic contradictions,Open weights policy undermines non-proliferation efforts
+export,Export controls,Controls,cooperate,Cooperative development,Postures,-0.05,Strategic contradictions,Export restrictions hinder international cooperation
