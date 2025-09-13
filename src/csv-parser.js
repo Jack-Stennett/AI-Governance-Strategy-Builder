@@ -104,6 +104,43 @@ class CSVParser {
     return result;
   }
 
+  parseMultilineCSV(csvText) {
+    const records = [];
+    const lines = csvText.split('\n');
+    if (lines.length < 2) return records;
+    
+    const headers = this.parseCSVLine(lines[0]);
+    let currentRecord = '';
+    let inQuotedField = false;
+    
+    for (let i = 1; i < lines.length; i++) {
+      const line = lines[i];
+      currentRecord += (currentRecord ? '\n' : '') + line;
+      
+      // Count quotes to determine if we're in a quoted field
+      let quoteCount = 0;
+      for (let j = 0; j < currentRecord.length; j++) {
+        if (currentRecord[j] === '"') quoteCount++;
+      }
+      inQuotedField = (quoteCount % 2) !== 0;
+      
+      // If we're not in a quoted field, process the record
+      if (!inQuotedField) {
+        const values = this.parseCSVLine(currentRecord.trim());
+        if (values.length >= headers.length) {
+          const record = {};
+          headers.forEach((header, index) => {
+            record[header.trim()] = values[index] ? values[index].trim() : '';
+          });
+          records.push(record);
+        }
+        currentRecord = '';
+      }
+    }
+    
+    return records;
+  }
+
   parseSynergiesCSV(csvText) {
     const lines = csvText.split('\n');
     const headers = this.parseCSVLine(lines[0]); // First line contains headers
@@ -149,30 +186,27 @@ class CSVParser {
   }
 
   parseNarrativesCSV(csvText) {
-    const lines = csvText.split('\n');
-    const headers = this.parseCSVLine(lines[0]); // First line contains headers
+    // Parse CSV with proper multiline field handling
+    const records = this.parseMultilineCSV(csvText);
     
-    console.log('Narrative CSV headers:', headers);
+    console.log('Narrative CSV headers:', records.length > 0 ? Object.keys(records[0]) : []);
     
     // Clear existing narratives
     this.narratives = [];
     
-    for (let i = 1; i < lines.length; i++) {
-      const line = lines[i].trim();
-      if (!line) continue;
-      
-      const values = this.parseCSVLine(line);
-      if (values.length >= 9) { // All required fields
+    for (let i = 0; i < records.length; i++) {
+      const record = records[i];
+      if (record.Posture_ID && record.Difficulty && record.Narrative_Text) { // Check required fields
         const narrative = {
-          posture: values[0],           // Posture_ID
-          difficulty: values[1],        // Difficulty
-          successRange: values[2],      // Success_Rate_Range
-          outcomeCategory: values[3],   // Outcome_Category
-          narrativeType: values[4],     // Narrative_Type
-          institutionsContext: values[5], // Institutions_Context
-          mechanismsContext: values[6],   // Mechanisms_Context
-          controlsContext: values[7],     // Controls_Context
-          narrativeText: values[8]        // Narrative_Text
+          posture: record.Posture_ID,
+          difficulty: record.Difficulty,
+          successRange: record.Success_Rate_Range,
+          outcomeCategory: record.Outcome_Category,
+          narrativeType: record.Narrative_Type,
+          institutionsContext: record.Institutions_Context,
+          mechanismsContext: record.Mechanisms_Context,
+          controlsContext: record.Controls_Context,
+          narrativeText: record.Narrative_Text
         };
         
         this.narratives.push(narrative);
