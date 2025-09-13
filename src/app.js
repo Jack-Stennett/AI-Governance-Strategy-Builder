@@ -1470,13 +1470,13 @@ function selectNarrative(posture, difficulty, successRate, effectiveness) {
   
   const difficultyLabel = difficultyMap[difficulty] || 'realist';
   
-  // Determine success rate range
-  let successRange = '0.0-0.29'; // catastrophic failure
-  if (successRate >= 0.7) successRange = '0.7-1.0';      // major success
-  else if (successRate >= 0.5) successRange = '0.5-0.69'; // moderate success  
-  else if (successRate >= 0.3) successRange = '0.3-0.49'; // moderate failure
+  // Determine outcome category based on success rate
+  let outcomeCategory = 'catastrophic_failure';
+  if (successRate >= 0.7) outcomeCategory = 'major_success';
+  else if (successRate >= 0.5) outcomeCategory = 'moderate_success';  
+  else if (successRate >= 0.3) outcomeCategory = 'moderate_failure';
   
-  console.log(`🎯 Selecting narrative: ${posture}/${difficultyLabel}/${successRange} (success: ${Math.round(successRate*100)}%)`);
+  console.log(`🎯 Selecting narrative: ${posture}/${difficultyLabel}/${outcomeCategory} (success: ${Math.round(successRate*100)}%)`);
   
   if (LOADED_NARRATIVES.length === 0) {
     console.error('❌ LOADED_NARRATIVES is EMPTY!');
@@ -1486,7 +1486,7 @@ function selectNarrative(posture, difficulty, successRate, effectiveness) {
   let narrative = LOADED_NARRATIVES.find(n => 
     n.posture === posture && 
     n.difficulty === difficultyLabel && 
-    n.successRange === successRange
+    n.outcomeCategory === outcomeCategory
   );
   
   console.log('🔍 Exact match found:', !!narrative);
