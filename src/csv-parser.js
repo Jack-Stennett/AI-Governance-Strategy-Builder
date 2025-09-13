@@ -157,6 +157,77 @@ class CSVParser {
     return records;
   }
 
+  parseCSV(text, delimiter=',') {
+    const rows = [];
+    let row = [];
+    let field = '';
+    let inQuotes = false;
+
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+
+      if (inQuotes) {
+        if (c === '"') {
+          // Escaped double-quote
+          if (text[i + 1] === '"') { field += '"'; i++; }
+          else { inQuotes = false; }
+        } else {
+          field += c;
+        }
+      } else {
+        if (c === '"') { inQuotes = true; }
+        else if (c === delimiter) { row.push(field); field = ''; }
+        else if (c === '\n')       { row.push(field); rows.push(row); row = []; field = ''; }
+        else if (c === '\r')       { /* ignore CR; handled by \n */ }
+        else { field += c; }
+      }
+    }
+    // flush final field
+    row.push(field);
+    rows.push(row);
+
+    // headers + rows, with padding/truncation to header length
+    const headers = rows.shift().map(this.cleanHeader);
+    const width = headers.length;
+    const fixedRows = rows
+      .map(r => (r.length < width ? r.concat(Array(width - r.length).fill('')) :
+                 r.length > width ? r.slice(0, width) : r))
+      // drop completely empty lines (e.g., trailing newline)
+      .filter(r => r.some(x => x && x.trim().length));
+
+    return { headers, rows: fixedRows };
+  }
+
+  normalise(s) {
+    return s
+      .replace(/^\uFEFF/, '')             // strip BOM
+      .replace(/\u2028|\u2029/g, '\n')    // Unicode line seps → LF
+      .replace(/\r\n?/g, '\n');           // CRLF/CR → LF
+  }
+
+  cleanHeader(h) {
+    return String(h || '')
+      .replace(/^\uFEFF/, '')
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, '_');
+  }
+
+  headerIndexer(headers) {
+    const map = new Map(headers.map((h,i)=>[h,i]));
+    return (candidates) => {
+      for (const raw of candidates) {
+        const key = this.cleanHeader(raw);
+        if (map.has(key)) return map.get(key);
+      }
+      throw new Error(`Missing required column; tried ${candidates.join(', ')}`);
+    };
+  }
+
+  safe(x) {
+    return (x == null ? '' : String(x).trim());
+  }
+
   parseSynergiesCSV(csvText) {
     const lines = csvText.split('\n');
     const headers = this.parseCSVLine(lines[0]); // First line contains headers
@@ -202,41 +273,64 @@ class CSVParser {
   }
 
   parseNarrativesCSV(csvText) {
-    console.log('Raw CSV text length:', csvText.length);
-    console.log('First 200 chars of CSV:', csvText.substring(0, 200));
+    console.info('bytes', csvText.length);
+
+    // 1) Normalise then surface newline flavour
+    const raw = csvText;
+    const text = this.normalise(raw);
+    const lf = (text.match(/\n/g)||[]).length;
+    const crlf = (raw.match(/\r\n/g)||[]).length;
+    console.info({lf, crlf, hasBOM: raw.charCodeAt(0) === 0xFEFF});
+
+    // 2) Parse CSV with proper state machine
+    const { headers, rows } = this.parseCSV(text, ',');
     
-    // Use simple line-by-line parsing for now to get it working
-    const lines = csvText.split('\n');
-    const headers = lines[0].split(',').map(h => h.trim());
-    
-    console.log('Simple parsing - Headers:', headers);
-    console.log('Simple parsing - Total lines:', lines.length);
-    
+    console.info('headers(raw)', raw.slice(0, 300));
+    console.info('headers(parsed)', headers.map((h,i)=>[i, JSON.stringify(h)]));
+    console.info('Looking for narrative_text in headers:', headers.includes('narrative_text'));
+
+    // 3) Log first 3 parsed records with field counts
+    rows.slice(0,3).forEach((r,i)=>console.info('row', i, r.length, r));
+
+    // Use hardcoded indices based on your actual CSV structure
+    const postureIdx = 0;        // Posture_ID
+    const difficultyIdx = 1;     // Difficulty  
+    const outcomeIdx = 3;        // Outcome_Category
+    const narrativeTextIdx = 5;  // Narrative text appears to be in position 5 based on debug output
+    console.log('Using hardcoded indices:', {postureIdx, difficultyIdx, outcomeIdx, narrativeTextIdx});
+
     // Clear existing narratives
     this.narratives = [];
     
-    for (let i = 1; i < lines.length; i++) {
-      const line = lines[i].trim();
-      if (!line) continue;
-      
-      // For now, just try to parse what we can
-      const parts = line.split(',');
-      if (parts.length >= 5) { // At least posture, difficulty, range, category, type
+    for (const row of rows) {
+      const posture        = this.safe(row[postureIdx]).toLowerCase();
+      const difficulty     = this.safe(row[difficultyIdx]).toLowerCase();
+      const outcomeCategory= this.safe(row[outcomeIdx]).toLowerCase();
+      const narrativeText  = this.safe(row[narrativeTextIdx]);
+
+      console.log('Mapping check', {
+        posture: row[postureIdx],
+        difficulty: row[difficultyIdx],
+        outcome: row[outcomeIdx],
+        text: (row[narrativeTextIdx] || '').slice(0,60)
+      });
+
+      if (posture && outcomeCategory && narrativeText) {
         const narrative = {
-          posture: parts[0].trim(),
-          difficulty: parts[1].trim(), 
-          successRange: parts[2].trim(),
-          outcomeCategory: parts[3].trim(),
-          narrativeType: parts[4].trim(),
-          narrativeText: `Simplified narrative for ${parts[0]}/${parts[1]} scenario with ${parts[3]} outcome.`
+          posture,
+          difficulty,
+          outcomeCategory,
+          narrativeText,
+          successRange: this.safe(row[idx(['success_rate_range', 'range'])]),
+          narrativeType: this.safe(row[idx(['narrative_type', 'type'])]),
         };
-        
         this.narratives.push(narrative);
         console.log(`Loaded narrative: ${narrative.posture}/${narrative.difficulty}/${narrative.outcomeCategory}`);
+      } else {
+        console.warn('Skipping malformed row', { posture, outcomeCategory, narrativePreview: narrativeText.slice(0,60) });
       }
     }
-    
-    console.log('Parsed narratives:', this.narratives.length, 'total');
+    console.info('Parsed narratives:', this.narratives.length);
   }
 
   processData() {

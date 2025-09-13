@@ -1490,6 +1490,11 @@ function selectNarrative(posture, difficulty, successRate, effectiveness) {
   );
   
   console.log('🔍 Exact match found:', !!narrative);
+  if (narrative) {
+    console.log('📖 Selected narrative preview:', narrative.narrativeText.substring(0, 100) + '...');
+  } else {
+    console.log('🔍 Available narratives for', posture + ':', LOADED_NARRATIVES.filter(n => n.posture === posture).map(n => n.difficulty + '/' + n.outcomeCategory));
+  }
   
   // Fallback to same posture and difficulty with different success rate
   if (!narrative) {
