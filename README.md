@@ -7,7 +7,6 @@ An interactive strategic decision-making game for AI governance. Build comprehen
 ### 📊 Strategic Analysis
 - **Comprehensive Simulation**: Monte Carlo analysis with 1000+ iteration statistical modeling
 - **Professional Reporting**: Clear, readable strategic assessments and outcome predictions
-- **Evidence-Based Results**: Success rates derived from academic research and expert assessment
 - **Real-Time Feedback**: Immediate analysis of strategy effectiveness and trade-offs
 
 ### 📚 Rich Educational Content
@@ -24,17 +23,16 @@ An interactive strategic decision-making game for AI governance. Build comprehen
 
 ### 🔬 Advanced Simulation
 - **Synergy Detection**: Automatically identifies complementary and contradictory mechanism combinations
-- **Resource Constraints**: Realistic budget ($80B-$200B) and political capital modeling
+- **Resource Constraints**: Realistic pre-FTX collapse budget ($120B-$400B) and political capital modeling
 - **Outcome Visualization**: Canvas-based charts showing probability distributions and success rates
 
 ## Data Sources
 
-The tool integrates data from comprehensive CSV datasets, which include:
+The tool integrates data from a relatively comprehensive custom-made datasets, which include:
 
-- **Academic Literature**: Research papers, policy analyses, and theoretical frameworks
-- **Real-World Examples**: Current implementations and historical precedents  
-- **Impact Assessments**: Quantitative ratings and qualitative analysis
-- **Implementation Details**: Costs, political requirements, and feasibility assessments
+- **Academic Literature References**: Research papers, policy analyses, and theoretical frameworks
+- **Real-World Examples**: Current implementations and historical precedents
+- **Potential Challenges**: Reasons that these governance ideas could go wrong
 
 ## File Structure
 
@@ -61,37 +59,29 @@ AI-Governance-Strategy-Builder/
 ## How to Use
 
 ### Basic Workflow
-1. **Select Difficulty**: Choose Easy ($200B, 20 PC), Medium ($120B, 12 PC), or Hard ($80B, 8 PC)
-2. **Choose Strategic Posture**: Pick one macro-approach (free of charge)
+1. **Select Difficulty**: Choose Easy ($300B, 24 PC), Medium ($220B, 20 PC), or Hard ($120B, 16 PC)
+2. **Choose Strategic Posture**: Pick one macro-approach
 3. **Build Your Portfolio**: Select institutional, regulatory, and technical options within budget
-4. **Review Requirements**: Ensure posture-specific requirements are met
-5. **Lock In**: Finalize your selections
-6. **Analyze Outcomes**: Roll individual results or run Monte Carlo simulations
+4. **Analyze Outcomes**: Find your results with a custom outcome generator
 
 ### Key Concepts
 - **Budget**: Financial resources in billions of dollars
 - **Political Capital (PC)**: Political feasibility and support required
-- **Temperature**: Environmental favorability slider (0-100%)
 - **Requirements**: Mandatory combinations for certain postures
 - **Synergies**: Complementary options that enhance effectiveness
 - **Contradictions**: Conflicting options that reduce overall success
 
 ### Advanced Features
-- **Search**: Use the search box to find specific governance mechanisms
 - **Export**: Download your build configuration for sharing or analysis  
-- **Help Modal**: Access detailed instructions and explanations
-- **Reset**: Clear all selections and start over
+- **Help Modal**: Access detailed instructions and explanations with links to external references
 
-## Browser Requirements
-
-### Minimum Requirements
+### Requirements
 - **Modern Browser**: Chrome 60+, Firefox 55+, Safari 12+, Edge 79+
-- **JavaScript**: ES6 support (async/await, modules, arrow functions)
+- **JavaScript**: ES6 support
 - **CSS**: Custom properties, flexbox, grid layout
-- **APIs**: Fetch, localStorage, canvas (for charts)
 
 ### Recommended
-- **Screen Size**: 1024x768 or larger for optimal experience
+- **Screen Size**: 1024x768 or larger for optimal experience; works on a portable telephone
 - **Network**: Local server for full CSV data integration
 - **JavaScript Enabled**: Required for all interactive features
 
@@ -149,5 +139,5 @@ For questions, issues, or contributions, please refer to the project repository 
 ---
 
 **Version**: 4.0  
-**Last Updated**: 2025-01-01  
-**Browser Tested**: Chrome, Firefox, Safari, Edge
+**Last Updated**: 2025-09-13  
+**Browsers Tested**: Chrome, Firefox

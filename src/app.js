@@ -313,10 +313,10 @@ function populateDifficultyPage() {
   
   // Map difficulty modes to constable images
   const constableImages = {
-    optimist: 'images/LeCunConstable.jpg',
-    realist: 'images/AmodeiConstable.jpg', 
-    pessimist: 'images/HintonConstable.png',
-    yudkowskyite: 'images/EliezerConstable.jpg'
+    optimist: 'Images/LeCunConstable.jpg',
+    realist: 'Images/AmodeiConstable.jpg', 
+    pessimist: 'Images/HintonConstable.png',
+    yudkowskyite: 'Images/EliezerConstable.jpg'
   };
   
   grid.innerHTML = '';
@@ -1007,22 +1007,22 @@ async function evaluateStrategy() {
   if (successRate >= 0.7) {
     outcome = 'Major Success';
     description = 'Your strategy achieved outstanding results, successfully navigating humanity through the AI transition with minimal casualties and maximum benefit.';
-    imageFile = 'images/spectacular_success.jpg';
+    imageFile = 'Images/spectacular_success.jpg';
     outcomeClass = 'success-high';
   } else if (successRate >= 0.5) {
     outcome = 'Moderate Success';
     description = 'Your strategy generally succeeded in managing AI risks, though some challenges and setbacks occurred along the way.';
-    imageFile = 'images/mild_success.jpg';
+    imageFile = 'Images/mild_success.jpg';
     outcomeClass = 'success-moderate';
   } else if (successRate >= 0.3) {
     outcome = 'Moderate Failure';
     description = 'Your strategy fell short of preventing significant AI-related harms, though it may have prevented even worse outcomes.';
-    imageFile = 'images/mild_failure.jpg';
+    imageFile = 'Images/mild_failure.jpg';
     outcomeClass = 'failure-moderate';
   } else {
     outcome = 'Catastrophic Failure';
     description = 'Your strategy failed catastrophically, leading to severe consequences for humanity in the AI transition.';
-    imageFile = 'images/spectacular_failure.jpg';
+    imageFile = 'Images/spectacular_failure.jpg';
     outcomeClass = 'failure-high';
   }
   
@@ -1523,7 +1523,23 @@ function selectNarrative(posture, difficulty, successRate, effectiveness) {
     return narrative.narrativeText;
   } else {
     console.error('No narrative found! Using basic fallback.');
-    return `The ${posture} strategy had a ${Math.round(successRate * 100)}% chance of success in this scenario. The approach encountered various challenges and opportunities based on the institutional, regulatory, and technical mechanisms selected. Ultimately, the combination of factors led to the final outcome. **The world's fate was determined by the complex interplay of governance mechanisms and strategic choices.**`;
+    
+    // Determine outcome category for appropriate ending
+    let outcomeCategory = 'catastrophic_failure';
+    let ending = 'Humanity was systematically eliminated by uncontrolled AI systems.';
+    
+    if (successRate >= 0.7) {
+      outcomeCategory = 'major_success';
+      ending = 'The world flourished in unprecedented prosperity and technological harmony.';
+    } else if (successRate >= 0.5) {
+      outcomeCategory = 'moderate_success';  
+      ending = 'Humanity achieved stable, sustainable progress with broad benefits.';
+    } else if (successRate >= 0.3) {
+      outcomeCategory = 'moderate_failure';
+      ending = 'Humanity struggled but survived with significant hardships and ongoing technological risks.';
+    }
+    
+    return `The ${posture} strategy had a ${Math.round(successRate * 100)}% chance of success in this scenario. The approach encountered various challenges and opportunities based on the institutional, regulatory, and technical mechanisms selected. While the governance framework showed some promise, critical gaps in coordination and implementation limited effectiveness. **${ending}**`;
   }
 }
 
@@ -1560,7 +1576,7 @@ async function loadNarrativesFromCSV() {
   try {
     console.log('🔄 Loading narratives from CSV...');
     const parser = new CSVParser();
-    const narratives = await parser.loadNarrativesCSV('narratives.csv');
+    const narratives = await parser.loadNarrativesCSV('./narratives.csv');
     
     // Update global narratives variable
     LOADED_NARRATIVES = narratives;
