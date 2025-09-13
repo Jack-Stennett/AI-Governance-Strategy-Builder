@@ -294,9 +294,9 @@ class CSVParser {
 
     // Use hardcoded indices based on your actual CSV structure
     const postureIdx = 0;        // Posture_ID
-    const difficultyIdx = 1;     // Difficulty  
+    const difficultyIdx = 1;     // Difficulty
     const outcomeIdx = 3;        // Outcome_Category
-    const narrativeTextIdx = 5;  // Narrative text appears to be in position 5 based on debug output
+    const narrativeTextIdx = 8;  // Narrative_Text is column 8
     console.log('Using hardcoded indices:', {postureIdx, difficultyIdx, outcomeIdx, narrativeTextIdx});
 
     // Clear existing narratives
@@ -321,8 +321,8 @@ class CSVParser {
           difficulty,
           outcomeCategory,
           narrativeText,
-          successRange: this.safe(row[idx(['success_rate_range', 'range'])]),
-          narrativeType: this.safe(row[idx(['narrative_type', 'type'])]),
+          successRange: this.safe(row[2]), // Success_Rate_Range is column 2
+          narrativeType: this.safe(row[4]), // Narrative_Type is column 4
         };
         this.narratives.push(narrative);
         console.log(`Loaded narrative: ${narrative.posture}/${narrative.difficulty}/${narrative.outcomeCategory}`);

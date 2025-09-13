@@ -1579,12 +1579,10 @@ async function loadSynergiesFromCSV() {
 
 async function loadNarrativesFromCSV() {
   try {
-    console.log('🔄 Loading narratives from CSV...');
-    const parser = new CSVParser();
-    const narratives = await parser.loadNarrativesCSV('./narratives.csv');
-    
-    // Update global narratives variable
-    LOADED_NARRATIVES = narratives;
+    console.log('🔄 Loading narratives from static data...');
+
+    // Use the static narratives data instead of parsing CSV
+    LOADED_NARRATIVES = NARRATIVES_DATA;
     
     console.log('✅ Narratives loaded successfully:', LOADED_NARRATIVES.length, 'narrative combinations');
     console.log('First 3 narrative postures:', LOADED_NARRATIVES.slice(0, 3).map(n => n.posture));
