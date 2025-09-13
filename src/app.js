@@ -1583,8 +1583,10 @@ async function loadNarrativesFromCSV() {
 
     // Use the static narratives data instead of parsing CSV
     LOADED_NARRATIVES = NARRATIVES_DATA;
-    
+
     console.log('✅ Narratives loaded successfully:', LOADED_NARRATIVES.length, 'narrative combinations');
+    console.log('📊 Sample narrative:', LOADED_NARRATIVES[0]);
+    console.log('🔍 OGI narratives:', LOADED_NARRATIVES.filter(n => n.posture === 'ogi').length);
     console.log('First 3 narrative postures:', LOADED_NARRATIVES.slice(0, 3).map(n => n.posture));
   } catch (error) {
     console.error('❌ Failed to load narratives from CSV:', error);

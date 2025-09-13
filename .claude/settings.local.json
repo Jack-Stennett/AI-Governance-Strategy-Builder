@@ -34,7 +34,8 @@
       "Bash(rm:*)",
       "Bash(gh repo create:*)",
       "Bash(git remote set-url:*)",
-      "Bash(start https://github.com/new)"
+      "Bash(start https://github.com/new)",
+      "Bash(node:*)"
     ],
     "deny": [],
     "ask": []
