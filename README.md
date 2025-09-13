@@ -77,9 +77,8 @@ AI-Governance-Strategy-Builder/
 
 ### Requirements
 - **Modern Browser**: Chrome 60+, Firefox 55+, Safari 12+, Edge 79+
-- **JavaScript**: ES6 support (async/await, modules, arrow functions)
+- **JavaScript**: ES6 support
 - **CSS**: Custom properties, flexbox, grid layout
-- **APIs**: Fetch, localStorage, canvas (for charts)
 
 ### Recommended
 - **Screen Size**: 1024x768 or larger for optimal experience; works on a portable telephone
@@ -140,5 +139,5 @@ For questions, issues, or contributions, please refer to the project repository 
 ---
 
 **Version**: 4.0  
-**Last Updated**: 2025-01-01  
-**Browser Tested**: Chrome, Firefox, Safari, Edge
+**Last Updated**: 2025-09-13  
+**Browsers Tested**: Chrome, Firefox
