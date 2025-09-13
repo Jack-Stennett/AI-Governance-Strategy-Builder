@@ -1548,7 +1548,7 @@ async function loadSynergiesFromCSV() {
   try {
     console.log('🔄 Loading synergies from CSV...');
     const parser = new CSVParser();
-    const synergies = await parser.loadSynergiesCSV('synergies.csv');
+    const synergies = await parser.loadSynergiesCSV('./synergies.csv');
     
     // Update global synergy variables
     LOADED_SYNERGY_MATRIX = synergies.matrix;
