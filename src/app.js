@@ -1523,7 +1523,23 @@ function selectNarrative(posture, difficulty, successRate, effectiveness) {
     return narrative.narrativeText;
   } else {
     console.error('No narrative found! Using basic fallback.');
-    return `The ${posture} strategy had a ${Math.round(successRate * 100)}% chance of success in this scenario. The approach encountered various challenges and opportunities based on the institutional, regulatory, and technical mechanisms selected. Ultimately, the combination of factors led to the final outcome. **The world's fate was determined by the complex interplay of governance mechanisms and strategic choices.**`;
+    
+    // Determine outcome category for appropriate ending
+    let outcomeCategory = 'catastrophic_failure';
+    let ending = 'Humanity was systematically eliminated by uncontrolled AI systems.';
+    
+    if (successRate >= 0.7) {
+      outcomeCategory = 'major_success';
+      ending = 'The world flourished in unprecedented prosperity and technological harmony.';
+    } else if (successRate >= 0.5) {
+      outcomeCategory = 'moderate_success';  
+      ending = 'Humanity achieved stable, sustainable progress with broad benefits.';
+    } else if (successRate >= 0.3) {
+      outcomeCategory = 'moderate_failure';
+      ending = 'Humanity struggled but survived with significant hardships and ongoing technological risks.';
+    }
+    
+    return `The ${posture} strategy had a ${Math.round(successRate * 100)}% chance of success in this scenario. The approach encountered various challenges and opportunities based on the institutional, regulatory, and technical mechanisms selected. While the governance framework showed some promise, critical gaps in coordination and implementation limited effectiveness. **${ending}**`;
   }
 }
 
