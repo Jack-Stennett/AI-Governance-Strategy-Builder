@@ -1511,19 +1511,36 @@ function selectNarrative(posture, difficulty, successRate, effectiveness) {
     );
 
     if (possibleNarratives.length > 0) {
-      // Sort by outcome preference based on actual outcome category
-      if (outcomeCategory === 'moderate_failure' || outcomeCategory === 'catastrophic_failure') {
-        // Prefer failure narratives for failure outcomes
-        narrative = possibleNarratives.find(n => n.outcomeCategory === 'moderate_failure') ||
-                   possibleNarratives.find(n => n.outcomeCategory === 'catastrophic_failure') ||
-                   possibleNarratives[0]; // fallback to any
-      } else if (outcomeCategory === 'moderate_success' || outcomeCategory === 'major_success') {
-        // Prefer success narratives for success outcomes
-        narrative = possibleNarratives.find(n => n.outcomeCategory === 'moderate_success') ||
-                   possibleNarratives.find(n => n.outcomeCategory === 'major_success') ||
-                   possibleNarratives[0]; // fallback to any
-      } else {
-        narrative = possibleNarratives[0];
+      // Define narrative quality hierarchy (higher is better)
+      const qualityOrder = ['synergy', 'institutions_heavy', 'mechanisms_heavy', 'controls_heavy', 'contradiction', 'corruption', 'institutions_weak', 'basic'];
+
+      // Try exact match first, sorted by quality
+      let exactMatches = possibleNarratives.filter(n => n.outcomeCategory === outcomeCategory);
+      if (exactMatches.length > 0) {
+        narrative = exactMatches.sort((a, b) => qualityOrder.indexOf(a.narrativeType) - qualityOrder.indexOf(b.narrativeType))[0];
+      }
+
+      if (!narrative) {
+        // If no exact match, find compatible outcomes, also sorted by quality
+        let compatibleNarratives = [];
+        if (outcomeCategory === 'catastrophic_failure') {
+          compatibleNarratives = possibleNarratives.filter(n => n.outcomeCategory === 'moderate_failure');
+        } else if (outcomeCategory === 'moderate_failure') {
+          compatibleNarratives = possibleNarratives.filter(n => n.outcomeCategory === 'catastrophic_failure');
+        } else if (outcomeCategory === 'major_success') {
+          compatibleNarratives = possibleNarratives.filter(n => n.outcomeCategory === 'moderate_success');
+        } else if (outcomeCategory === 'moderate_success') {
+          compatibleNarratives = possibleNarratives.filter(n => n.outcomeCategory === 'major_success');
+        }
+
+        if (compatibleNarratives.length > 0) {
+          narrative = compatibleNarratives.sort((a, b) => qualityOrder.indexOf(a.narrativeType) - qualityOrder.indexOf(b.narrativeType))[0];
+        }
+
+        // Final fallback to any with same posture/difficulty, sorted by quality
+        if (!narrative) {
+          narrative = possibleNarratives.sort((a, b) => qualityOrder.indexOf(a.narrativeType) - qualityOrder.indexOf(b.narrativeType))[0];
+        }
       }
     }
 
@@ -1539,17 +1556,36 @@ function selectNarrative(posture, difficulty, successRate, effectiveness) {
     console.log(`🔄 Fallback 2: Looking for posture '${posture}' - found ${matchingPostures.length} matches`);
 
     if (matchingPostures.length > 0) {
-      // Prefer narratives with matching outcome category even if difficulty is different
-      if (outcomeCategory === 'moderate_failure' || outcomeCategory === 'catastrophic_failure') {
-        narrative = matchingPostures.find(n => n.outcomeCategory === 'moderate_failure') ||
-                   matchingPostures.find(n => n.outcomeCategory === 'catastrophic_failure') ||
-                   matchingPostures[0];
-      } else if (outcomeCategory === 'moderate_success' || outcomeCategory === 'major_success') {
-        narrative = matchingPostures.find(n => n.outcomeCategory === 'moderate_success') ||
-                   matchingPostures.find(n => n.outcomeCategory === 'major_success') ||
-                   matchingPostures[0];
-      } else {
-        narrative = matchingPostures[0];
+      // Define narrative quality hierarchy (higher is better)
+      const qualityOrder = ['synergy', 'institutions_heavy', 'mechanisms_heavy', 'controls_heavy', 'contradiction', 'corruption', 'institutions_weak', 'basic'];
+
+      // Prefer exact match first, sorted by quality
+      let exactMatches = matchingPostures.filter(n => n.outcomeCategory === outcomeCategory);
+      if (exactMatches.length > 0) {
+        narrative = exactMatches.sort((a, b) => qualityOrder.indexOf(a.narrativeType) - qualityOrder.indexOf(b.narrativeType))[0];
+      }
+
+      if (!narrative) {
+        // If no exact match, prefer compatible outcomes, also sorted by quality
+        let compatibleNarratives = [];
+        if (outcomeCategory === 'catastrophic_failure') {
+          compatibleNarratives = matchingPostures.filter(n => n.outcomeCategory === 'moderate_failure');
+        } else if (outcomeCategory === 'moderate_failure') {
+          compatibleNarratives = matchingPostures.filter(n => n.outcomeCategory === 'catastrophic_failure');
+        } else if (outcomeCategory === 'major_success') {
+          compatibleNarratives = matchingPostures.filter(n => n.outcomeCategory === 'moderate_success');
+        } else if (outcomeCategory === 'moderate_success') {
+          compatibleNarratives = matchingPostures.filter(n => n.outcomeCategory === 'major_success');
+        }
+
+        if (compatibleNarratives.length > 0) {
+          narrative = compatibleNarratives.sort((a, b) => qualityOrder.indexOf(a.narrativeType) - qualityOrder.indexOf(b.narrativeType))[0];
+        }
+
+        // Final fallback to any narrative with this posture, sorted by quality
+        if (!narrative) {
+          narrative = matchingPostures.sort((a, b) => qualityOrder.indexOf(a.narrativeType) - qualityOrder.indexOf(b.narrativeType))[0];
+        }
       }
     }
 
