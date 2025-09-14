@@ -232,6 +232,10 @@ function updateBudgetDisplay() {
     }
     
     display.innerHTML = `
+      <div class="budget-header">
+        <strong>Shared Budget (All 3 Categories)</strong>
+        <span class="budget-hint">💡 This budget is shared across Institutions, Legal Framework, and Technical Controls</span>
+      </div>
       <span ${budgetOverspent ? 'style="color: var(--danger-color);"' : ''}>Budget: $${totalCost}B / $${strategy.availableBudget}B</span>
       <span ${pcOverspent ? 'style="color: var(--danger-color);"' : ''}>Political Capital: ${totalPC} / ${strategy.availablePC} PC</span>
       ${warningMessage}
@@ -1498,10 +1502,31 @@ function selectNarrative(posture, difficulty, successRate, effectiveness) {
   
   // Fallback to same posture and difficulty with different success rate
   if (!narrative) {
-    narrative = LOADED_NARRATIVES.find(n => 
-      n.posture === posture && 
+    // Try to find a narrative with same posture, difficulty, but different outcome within reasonable bounds
+    // For moderate failure, prefer moderate failure or catastrophic failure over success narratives
+    // For moderate success, prefer moderate success or major success over failure narratives
+    let possibleNarratives = LOADED_NARRATIVES.filter(n =>
+      n.posture === posture &&
       n.difficulty === difficultyLabel
     );
+
+    if (possibleNarratives.length > 0) {
+      // Sort by outcome preference based on actual outcome category
+      if (outcomeCategory === 'moderate_failure' || outcomeCategory === 'catastrophic_failure') {
+        // Prefer failure narratives for failure outcomes
+        narrative = possibleNarratives.find(n => n.outcomeCategory === 'moderate_failure') ||
+                   possibleNarratives.find(n => n.outcomeCategory === 'catastrophic_failure') ||
+                   possibleNarratives[0]; // fallback to any
+      } else if (outcomeCategory === 'moderate_success' || outcomeCategory === 'major_success') {
+        // Prefer success narratives for success outcomes
+        narrative = possibleNarratives.find(n => n.outcomeCategory === 'moderate_success') ||
+                   possibleNarratives.find(n => n.outcomeCategory === 'major_success') ||
+                   possibleNarratives[0]; // fallback to any
+      } else {
+        narrative = possibleNarratives[0];
+      }
+    }
+
     console.log('🔄 Fallback 1: Same posture+difficulty, different success rate:', !!narrative);
     if (narrative) {
       console.log('🔄 Selected fallback narrative:', narrative.posture + '/' + narrative.difficulty + '/' + narrative.successRange, '→', narrative.outcomeCategory);
@@ -1512,7 +1537,22 @@ function selectNarrative(posture, difficulty, successRate, effectiveness) {
   if (!narrative) {
     const matchingPostures = LOADED_NARRATIVES.filter(n => n.posture === posture);
     console.log(`🔄 Fallback 2: Looking for posture '${posture}' - found ${matchingPostures.length} matches`);
-    narrative = LOADED_NARRATIVES.find(n => n.posture === posture);
+
+    if (matchingPostures.length > 0) {
+      // Prefer narratives with matching outcome category even if difficulty is different
+      if (outcomeCategory === 'moderate_failure' || outcomeCategory === 'catastrophic_failure') {
+        narrative = matchingPostures.find(n => n.outcomeCategory === 'moderate_failure') ||
+                   matchingPostures.find(n => n.outcomeCategory === 'catastrophic_failure') ||
+                   matchingPostures[0];
+      } else if (outcomeCategory === 'moderate_success' || outcomeCategory === 'major_success') {
+        narrative = matchingPostures.find(n => n.outcomeCategory === 'moderate_success') ||
+                   matchingPostures.find(n => n.outcomeCategory === 'major_success') ||
+                   matchingPostures[0];
+      } else {
+        narrative = matchingPostures[0];
+      }
+    }
+
     console.log('🔄 Fallback 2: Same posture, different difficulty:', !!narrative);
   }
   
